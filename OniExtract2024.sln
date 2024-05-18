@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OniExtract2024", "OniExtract2024\OniExtract2024.csproj", "{7F6882D7-CA4B-49A1-B7B5-C674C8BC40BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F6882D7-CA4B-49A1-B7B5-C674C8BC40BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F6882D7-CA4B-49A1-B7B5-C674C8BC40BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F6882D7-CA4B-49A1-B7B5-C674C8BC40BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F6882D7-CA4B-49A1-B7B5-C674C8BC40BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD509A15-39BB-471E-82D9-C20F4815F181}
+	EndGlobalSection
+EndGlobal
