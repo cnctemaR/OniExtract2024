@@ -77,6 +77,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
+    <Compile Include="model\BColor.cs" />
+    <Compile Include="model\BVector2.cs" />
+    <Compile Include="model\OutBlightVulnerable.cs" />
+    <Compile Include="model\OutComet.cs" />
+    <Compile Include="model\OutConsumedElement.cs" />
+    <Compile Include="model\OutDecorProvider.cs" />
+    <Compile Include="model\OutDrowningMonitor.cs" />
+    <Compile Include="model\OutElementConsumer.cs" />
+    <Compile Include="model\OutElementConverter.cs" />
+    <Compile Include="model\OutFactionAlignment.cs" />
+    <Compile Include="model\OutGrowing.cs" />
+    <Compile Include="model\OutHealth.cs" />
+    <Compile Include="model\OutIlluminationVulnerable.cs" />
+    <Compile Include="model\OutIncubationMonitorDef.cs" />
+    <Compile Include="model\OutOutputElement.cs" />
+    <Compile Include="model\OutOxygenBreather.cs" />
+    <Compile Include="model\OutPassiveElementConsumer.cs" />
+    <Compile Include="model\OutPickupable.cs" />
+    <Compile Include="model\OutPressureVulnerable.cs" />
+    <Compile Include="model\OutPrimaryElement.cs" />
+    <Compile Include="model\OutPrioritizable.cs" />
+    <Compile Include="model\OutStorage.cs" />
+    <Compile Include="ExportEntity.cs" />
+    <Compile Include="model\BEntity.cs" />
+    <Compile Include="model\OutManualDeliveryKG.cs" />
+    <Compile Include="model\OutMutantPlant.cs" />
+    <Compile Include="model\OutNavigator.cs" />
+    <Compile Include="model\OutTemperatureVulnerable.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
