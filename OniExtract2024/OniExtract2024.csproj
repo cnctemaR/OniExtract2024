@@ -41,7 +41,6 @@
 		<!--Default for dev folder: -->
 		<!--<ModFolder>$(UserProfile)\Documents\Klei\OxygenNotIncluded\mods\dev</ModFolder>-->
 		<Optimize>true</Optimize>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -89,4 +88,32 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!--Merges all dlls in the output folder into a single dll-->
+	<Target Name="ILRepack" AfterTargets="Build" Condition="'$(IsPacked)' == 'true'">
+		<ItemGroup>
+			<InputAssemblies Include="$(TargetPath)" />
+			<InputAssemblies
+					Include="$(TargetDir)\*.dll"
+					Exclude="$(TargetPath); **/0Harmony.dll; **_public.dll ;**Newtonsoft.Json;**/System.*; **/Microsoft.*" />
+		</ItemGroup>
+
+		<ILRepack
+		  TargetPlatformVersion="v4"
+		  TargetKind="SameAsPrimaryAssembly"
+		  InputAssemblies="@(InputAssemblies)"
+		  Wildcards="true"
+		  LibraryPath="$(GameLibsFolder)"
+		  Parallel="true"
+		  OutputFile="$(TargetPath)"/>
+	</Target>
+
+	<!--Copies the mod dll, the two yaml files and everything inside the ModAssets folder to the target mod folder-->
+	<Target Name="CopyModsToDevFolder" AfterTargets="ILRepack" Condition="'$(AssemblyName)' != 'UtilLibs' and '$(AssemblyName)' != 'Util_TwitchIntegrationLib'">
+    <Copy
+      SourceFiles="
+      $(TargetDir)$(TargetName).dll;
+      $(TargetDir)mod.yaml;
+      $(TargetDir)mod_info.yaml;"
+      DestinationFolder="$(ModFolder)\$(TargetName)_dev\" />
+  </Target>
 </Project>
