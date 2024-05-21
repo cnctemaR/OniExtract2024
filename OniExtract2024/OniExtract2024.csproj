@@ -34,14 +34,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-		<!--Gamedata Folder, adjust to your own ONI installation-->
-		<GameLibsFolder>C:\Program Files (x86)\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibsFolder>
-		<!--OutputModFolder, adjust it to your own dev folder-->
-		<ModFolder>$(UserProfile)\Documents\Klei\OxygenNotIncluded\mods\dev</ModFolder>
-		<!--Default for dev folder: -->
-		<!--<ModFolder>$(UserProfile)\Documents\Klei\OxygenNotIncluded\mods\dev</ModFolder>-->
-		<Optimize>true</Optimize>
-	</PropertyGroup>
+    <!--Gamedata Folder, adjust to your own ONI installation-->
+    <GameLibsFolder>C:\Program Files (x86)\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibsFolder>
+    <!--OutputModFolder, adjust it to your own dev folder-->
+    <ModFolder>$(UserProfile)\Documents\Klei\OxygenNotIncluded\mods\dev</ModFolder>
+    <!--Default for dev folder: -->
+    <!--<ModFolder>$(UserProfile)\Documents\Klei\OxygenNotIncluded\mods\dev</ModFolder>-->
+    <Optimize>true</Optimize>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>$(GameLibsFolder)\0Harmony.dll</HintPath>
@@ -89,31 +89,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--Merges all dlls in the output folder into a single dll-->
-	<Target Name="ILRepack" AfterTargets="Build" Condition="'$(IsPacked)' == 'true'">
-		<ItemGroup>
-			<InputAssemblies Include="$(TargetPath)" />
-			<InputAssemblies
-					Include="$(TargetDir)\*.dll"
-					Exclude="$(TargetPath); **/0Harmony.dll; **_public.dll ;**Newtonsoft.Json;**/System.*; **/Microsoft.*" />
-		</ItemGroup>
-
-		<ILRepack
-		  TargetPlatformVersion="v4"
-		  TargetKind="SameAsPrimaryAssembly"
-		  InputAssemblies="@(InputAssemblies)"
-		  Wildcards="true"
-		  LibraryPath="$(GameLibsFolder)"
-		  Parallel="true"
-		  OutputFile="$(TargetPath)"/>
-	</Target>
-
-	<!--Copies the mod dll, the two yaml files and everything inside the ModAssets folder to the target mod folder-->
-	<Target Name="CopyModsToDevFolder" AfterTargets="ILRepack" Condition="'$(AssemblyName)' != 'UtilLibs' and '$(AssemblyName)' != 'Util_TwitchIntegrationLib'">
-    <Copy
-      SourceFiles="
-      $(TargetDir)$(TargetName).dll;
-      $(TargetDir)mod.yaml;
-      $(TargetDir)mod_info.yaml;"
-      DestinationFolder="$(ModFolder)\$(TargetName)_dev\" />
+  <Target Name="ILRepack" AfterTargets="Build" Condition="'$(IsPacked)' == 'true'">
+    <ItemGroup>
+      <InputAssemblies Include="$(TargetPath)" />
+      <InputAssemblies Include="$(TargetDir)\*.dll" Exclude="$(TargetPath); **/0Harmony.dll; **_public.dll ;**Newtonsoft.Json;**/System.*; **/Microsoft.*" />
+    </ItemGroup>
+    <ILRepack TargetPlatformVersion="v4" TargetKind="SameAsPrimaryAssembly" InputAssemblies="@(InputAssemblies)" Wildcards="true" LibraryPath="$(GameLibsFolder)" Parallel="true" OutputFile="$(TargetPath)" />
+  </Target>
+  <!--Copies the mod dll, the two yaml files and everything inside the ModAssets folder to the target mod folder-->
+  <Target Name="CopyModsToDevFolder" AfterTargets="ILRepack" Condition="'$(AssemblyName)' != 'UtilLibs' and '$(AssemblyName)' != 'Util_TwitchIntegrationLib'">
+    <Copy SourceFiles="&#xD;&#xA;      $(TargetDir)$(TargetName).dll;&#xD;&#xA;      $(TargetDir)mod.yaml;&#xD;&#xA;      $(TargetDir)mod_info.yaml;" DestinationFolder="$(ModFolder)\$(TargetName)_dev\" />
   </Target>
 </Project>
