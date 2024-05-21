@@ -77,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
+    <Compile Include="ExportTag.cs" />
+    <Compile Include="model\BColor.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
