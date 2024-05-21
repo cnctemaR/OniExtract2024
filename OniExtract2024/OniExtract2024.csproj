@@ -77,6 +77,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
+    <Compile Include="ExportBuilding.cs" />
+    <Compile Include="model\BBuildingDef.cs" />
+    <Compile Include="model\BColor.cs" />
+    <Compile Include="model\BuildMenuCategory.cs" />
+    <Compile Include="model\OutConduitConsumer.cs" />
+    <Compile Include="model\OutConduitDispenser.cs" />
+    <Compile Include="model\OutConsumedElement.cs" />
+    <Compile Include="model\OutElementConsumer.cs" />
+    <Compile Include="model\OutElementConverter.cs" />
+    <Compile Include="model\OutEnergyGenerator.cs" />
+    <Compile Include="model\OutOperational.cs" />
+    <Compile Include="model\OutOutputElement.cs" />
+    <Compile Include="model\OutPassiveElementConsumer.cs" />
+    <Compile Include="model\OutPlantablePlot.cs" />
+    <Compile Include="model\OutStorage.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
