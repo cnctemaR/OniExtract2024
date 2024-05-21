@@ -4,18 +4,12 @@ namespace OniExtract2024
 {
     public class Patches
     {
-        [HarmonyPatch(typeof(Db))]
-        [HarmonyPatch("Initialize")]
-        public class Db_Initialize_Patch
+        [HarmonyPatch(typeof(LegacyModMain), "Load")]
+        internal class OniExtract_Game_LegacyModMain
         {
-            public static void Prefix()
+            private static void Postfix()
             {
-                Debug.Log("I execute before Db.Initialize!");
-            }
 
-            public static void Postfix()
-            {
-                Debug.Log("I execute after Db.Initialize!");
             }
         }
     }
