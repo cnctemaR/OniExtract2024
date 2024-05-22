@@ -14,7 +14,7 @@ public class ExportCodex : BaseExport
     {
         foreach (var entry in categoryEntries)
         {
-            Debug.Log("OniExtract: entry:"+entry.Key+" Value: "+entry.Value.name);
+            //Debug.Log("OniExtract: entry:"+entry.Key+" Value: "+entry.Value.name);
             this.categoryEntries[entry.Key] = new OutCodexEntry(entry.Value);
         }
     }

@@ -10,7 +10,7 @@ namespace OniExtract2024
             public static ExportCodex exportCodex = new ExportCodex();
             private static void Postfix()
             {
-                Debug.Log("OniExtract: " + "Export Codex");
+                //Debug.Log("OniExtract: " + "Export Codex");
                 exportCodex.AddCategoryEntry(CodexCache.entries);
                 exportCodex.ExportJsonFile();
             }
