@@ -27,6 +27,10 @@ namespace OniExtract2024
                 ExportPOString exportPOString = new ExportPOString();
                 exportPOString.ExportAll();
                 exportPOString.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export Tags");
+                ExportTag exportTag = new ExportTag();
+                exportTag.AddAllGameTags();
+                exportTag.ExportJsonFile();
             }
         }
 
