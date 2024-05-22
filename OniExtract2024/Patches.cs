@@ -10,7 +10,7 @@ namespace OniExtract2024
             static ExportFood exportFood = new ExportFood();
             private static void Postfix()
             {
-                Debug.Log("OniExtract: " + "Export Food");
+                //Debug.Log("OniExtract: " + "Export Food");
                 exportFood.ExportAllFood();
                 exportFood.ExportJsonFile();
             }
