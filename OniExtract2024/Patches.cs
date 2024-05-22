@@ -10,7 +10,7 @@ namespace OniExtract2024
             private static void Postfix()
             {
 
-                Debug.Log("OniExtract: " + "Export PO_string");
+                //Debug.Log("OniExtract: " + "Export PO_string");
                 ExportPOString exportPOString = new ExportPOString();
                 exportPOString.ExportAll();
                 exportPOString.ExportJsonFile();
