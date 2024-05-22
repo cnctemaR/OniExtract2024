@@ -19,7 +19,7 @@ namespace OniExtract2024
             public static ExportEquipment exportElement = new ExportEquipment();
             private static void Postfix(IEquipmentConfig config)
             {
-                Debug.Log("OniExtract: " + "Export Equipments");
+                //Debug.Log("OniExtract: " + "Export Equipments");
                 exportElement.AddEquipmentDef(config);
                 exportElement.ExportJsonFile();
             }
