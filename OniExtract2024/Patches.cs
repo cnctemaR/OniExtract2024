@@ -10,6 +10,10 @@ namespace OniExtract2024
             private static void Postfix()
             {
 
+                Debug.Log("OniExtract: " + "Export UI Sprite");
+                ExportUISprite exportUISprite = new ExportUISprite();
+                exportUISprite.ExportAllUISprite();
+                exportUISprite.ExportJsonFile();
             }
         }
     }
