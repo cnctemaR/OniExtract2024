@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
     <Compile Include="ExportFood.cs" />
+    <Compile Include="ExportGeyser.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
