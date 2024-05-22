@@ -31,6 +31,10 @@ namespace OniExtract2024
                 ExportTag exportTag = new ExportTag();
                 exportTag.AddAllGameTags();
                 exportTag.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export Db");
+                ExportDb exportDb = new ExportDb();
+                exportDb.AddDbResources();
+                exportDb.ExportJsonFile();
             }
         }
 

@@ -84,9 +84,22 @@
     <Compile Include="ExportEquipment.cs" />
     <Compile Include="ExportRecipe.cs" />
     <Compile Include="ExportElement.cs" />
+    <Compile Include="ExportDb.cs" />
     <Compile Include="model\OutElement.cs" />
     <Compile Include="model\OutSubstance.cs" />
     <Compile Include="model\BColor.cs" />
+    <Compile Include="model\OutChoreGroup.cs" />
+    <Compile Include="model\OutChoreType.cs" />
+    <Compile Include="model\OutScheduleBlockType.cs" />
+    <Compile Include="model\OutScheduleGroup.cs" />
+    <Compile Include="model\OutSpice.cs" />
+    <Compile Include="model\OutStatusItem.cs" />
+    <Compile Include="model\OutStorage.cs" />
+    <Compile Include="model\OutStory.cs" />
+    <Compile Include="model\OutTech.cs" />
+    <Compile Include="model\OutTechItem.cs" />
+    <Compile Include="model\OutTrait.cs" />
+    <Compile Include="model\OutTraitGroup.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
