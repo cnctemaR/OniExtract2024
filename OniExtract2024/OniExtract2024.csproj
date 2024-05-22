@@ -80,6 +80,7 @@
     <Compile Include="ExportFood.cs" />
     <Compile Include="ExportGeyser.cs" />
     <Compile Include="ExportEquipment.cs" />
+    <Compile Include="ExportRecipe.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

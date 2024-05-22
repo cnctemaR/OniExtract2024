@@ -15,6 +15,10 @@ namespace OniExtract2024
                 //Debug.Log("OniExtract: " + "Export Food");
                 exportFood.ExportAllFood();
                 exportFood.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export recipes");
+                ExportRecipe exportRecipe = new ExportRecipe();
+                exportRecipe.ExportComplexRecipes();
+                exportRecipe.ExportJsonFile();
             }
         }
 
