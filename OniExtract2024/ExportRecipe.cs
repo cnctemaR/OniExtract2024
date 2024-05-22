@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class ExportRecipe : BaseExport
 {
     public override string ExportFileName { get; set; } = "recipe";
-    public List<ComplexRecipe> recipes = new List<ComplexRecipe>();
+    public List<ComplexRecipe> recipes = null;
 
     public ExportRecipe()
 	{
@@ -12,9 +12,6 @@ public class ExportRecipe : BaseExport
 
     public void ExportComplexRecipes()
     {
-        foreach (var mRecipe in ComplexRecipeManager.Get().recipes)
-        {
-            this.recipes.Add(mRecipe);
-        }
+        this.recipes = ComplexRecipeManager.Get().recipes;
     }
 }
