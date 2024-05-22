@@ -10,7 +10,7 @@ namespace OniExtract2024
             private static void Postfix()
             {
 
-                Debug.Log("OniExtract: " + "Export recipes");
+                //Debug.Log("OniExtract: " + "Export recipes");
                 ExportRecipe exportRecipe = new ExportRecipe();
                 exportRecipe.ExportComplexRecipes();
                 exportRecipe.ExportJsonFile();
