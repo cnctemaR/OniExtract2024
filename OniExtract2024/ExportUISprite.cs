@@ -51,7 +51,7 @@ public class ExportUISprite : BaseExport
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError("OniExtract: read " + prefab.PrefabTag.Name + " Failed.");
+                    //Debug.LogError("OniExtract: read " + prefab.PrefabTag.Name + " Failed.");
                 }
                 if (tupleUISprite != null)
                 {
