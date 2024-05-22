@@ -10,7 +10,7 @@ namespace OniExtract2024
             private static void Postfix()
             {
 
-                Debug.Log("OniExtract: " + "Export Db");
+                //Debug.Log("OniExtract: " + "Export Db");
                 ExportDb exportDb = new ExportDb();
                 exportDb.AddDbResources();
                 exportDb.ExportJsonFile();
