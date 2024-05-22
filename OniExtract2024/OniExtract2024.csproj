@@ -81,6 +81,9 @@
     <Compile Include="ExportGeyser.cs" />
     <Compile Include="ExportEquipment.cs" />
     <Compile Include="ExportRecipe.cs" />
+    <Compile Include="ExportElement.cs" />
+    <Compile Include="model\OutElement.cs" />
+    <Compile Include="model\OutSubstance.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

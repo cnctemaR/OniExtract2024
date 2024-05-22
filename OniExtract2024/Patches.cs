@@ -19,6 +19,10 @@ namespace OniExtract2024
                 ExportRecipe exportRecipe = new ExportRecipe();
                 exportRecipe.ExportComplexRecipes();
                 exportRecipe.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export Elements");
+                ExportElement exportElement = new ExportElement();
+                exportElement.AddAllElement();
+                exportElement.ExportJsonFile();
             }
         }
 
