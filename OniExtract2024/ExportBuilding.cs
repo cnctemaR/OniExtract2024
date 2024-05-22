@@ -5,21 +5,25 @@ using OniExtract2024;
 public class ExportBuilding : BaseExport
 {
     public override string ExportFileName { get; set; } = "building";
-    public List<BuildingDef> buildingDefs;
-    public List<BBuildingDef> bBuildingDefList;
+    public List<BuildingDef> buildingDefs = new List<BuildingDef>();
+    public List<BBuildingEntity> bBuildingDefList = new List<BBuildingEntity>();
     public List<BuildMenuCategory> buildMenuCategories = new List<BuildMenuCategory>();
     public Dictionary<string, List<KeyValuePair<string, string>>> buildingAndSubcategoryDataPairs = new Dictionary<string, List<KeyValuePair<string, string>>>();
 
     public ExportBuilding()
-	{
-        buildingDefs = new List<BuildingDef>();
-        bBuildingDefList = new List<BBuildingDef>();
+    {
     }
 
-    public void AddNewBBuildingDef(BuildingDef buildingDef)
+    public void AddNewBuildingDef(BuildingDef buildingDef)
+    {
+        buildingDef.BlockTileMaterial = null;
+        this.buildingDefs.Add(buildingDef);
+    }
+
+    public void AddNewBuildingEntity(BuildingDef buildingDef)
     {
         GameObject go = buildingDef.BuildingComplete;
-        BBuildingDef bBuild = new BBuildingDef(buildingDef.Tag.Name);
+        BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name);
         EnergyGenerator energyGenerator = go.GetComponent<EnergyGenerator>();
         if (energyGenerator != null)
         {

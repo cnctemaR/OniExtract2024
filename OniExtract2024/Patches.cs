@@ -15,9 +15,9 @@ namespace OniExtract2024
                 exportBuilding.ExportBuildMenu();
                 for (int indexBuilding = 0; indexBuilding < Assets.BuildingDefs.Count; ++indexBuilding)
                 {
-                    var buildingDef = Assets.BuildingDefs[indexBuilding];
-                    exportBuilding.buildingDefs.Add(buildingDef);
-                    exportBuilding.AddNewBBuildingDef(buildingDef);
+                    BuildingDef buildingDef = Assets.BuildingDefs[indexBuilding];
+                    exportBuilding.AddNewBuildingEntity(buildingDef);
+                    exportBuilding.AddNewBuildingDef(buildingDef);
                 }
                 exportBuilding.ExportJsonFile();
             }

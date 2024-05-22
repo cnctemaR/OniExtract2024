@@ -78,7 +78,7 @@
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
     <Compile Include="ExportBuilding.cs" />
-    <Compile Include="model\BBuildingDef.cs" />
+    <Compile Include="model\BBuildingEntity.cs" />
     <Compile Include="model\BColor.cs" />
     <Compile Include="model\BuildMenuCategory.cs" />
     <Compile Include="model\OutConduitConsumer.cs" />

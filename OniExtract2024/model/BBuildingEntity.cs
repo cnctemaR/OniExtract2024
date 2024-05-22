@@ -2,7 +2,7 @@
 
 namespace OniExtract2024
 {
-    public class BBuildingDef
+    public class BBuildingEntity
     {
         public string name;
         public OutEnergyGenerator energyGenerator;
@@ -14,7 +14,7 @@ namespace OniExtract2024
         public List<OutPassiveElementConsumer> passiveElementConsumers = new List<OutPassiveElementConsumer>();
         public OutStorage storage = null;
 
-        public BBuildingDef(string name)
+        public BBuildingEntity(string name)
         {
             this.name = name;
         }
