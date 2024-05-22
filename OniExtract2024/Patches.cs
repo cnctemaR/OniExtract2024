@@ -10,7 +10,7 @@ namespace OniExtract2024
             private static void Postfix()
             {
 
-                Debug.Log("OniExtract: " + "Export Tags");
+                //Debug.Log("OniExtract: " + "Export Tags");
                 ExportTag exportTag = new ExportTag();
                 exportTag.AddAllGameTags();
                 exportTag.ExportJsonFile();
