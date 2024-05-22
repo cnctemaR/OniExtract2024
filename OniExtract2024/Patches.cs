@@ -10,7 +10,7 @@ namespace OniExtract2024
             private static void Postfix()
             {
 
-                Debug.Log("OniExtract: " + "Export Buildings");
+                //Debug.Log("OniExtract: " + "Export Buildings");
                 ExportBuilding exportBuilding = new ExportBuilding();
                 exportBuilding.ExportBuildMenu();
                 for (int indexBuilding = 0; indexBuilding < Assets.BuildingDefs.Count; ++indexBuilding)
