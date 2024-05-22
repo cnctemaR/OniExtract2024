@@ -23,6 +23,10 @@ namespace OniExtract2024
                 ExportElement exportElement = new ExportElement();
                 exportElement.AddAllElement();
                 exportElement.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export PO_string");
+                ExportPOString exportPOString = new ExportPOString();
+                exportPOString.ExportAll();
+                exportPOString.ExportJsonFile();
             }
         }
 
