@@ -20,7 +20,7 @@ namespace OniExtract2024
         {
             static void Postfix(ref List<GeyserPrefabParams> __result)
             {
-                Debug.Log("OniExtract: " + "Export Geysers");
+                //Debug.Log("OniExtract: " + "Export Geysers");
                 ExportGeyser exportGeyser = new ExportGeyser();
                 exportGeyser.AddGeyserPrefabParams(__result);
                 exportGeyser.ExportJsonFile();
