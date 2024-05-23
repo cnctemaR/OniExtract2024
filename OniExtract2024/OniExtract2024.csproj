@@ -87,6 +87,7 @@
     <Compile Include="ExportDb.cs" />
     <Compile Include="ExportBuilding.cs" />
     <Compile Include="ExportEntity.cs" />
+    <Compile Include="ExportUISprite.cs" />
     <Compile Include="model\OutElement.cs" />
     <Compile Include="model\OutSubstance.cs" />
     <Compile Include="model\BColor.cs" />
@@ -134,8 +135,10 @@
     <Compile Include="model\OutMutantPlant.cs" />
     <Compile Include="model\OutNavigator.cs" />
     <Compile Include="model\OutTemperatureVulnerable.cs" />
+    <Compile Include="model\BUISprite.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\AnimTool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="mod.yaml">

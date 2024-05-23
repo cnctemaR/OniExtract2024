@@ -84,6 +84,10 @@ namespace OniExtract2024
                     exportBuilding.AddNewBuildingDef(buildingDef);
                 }
                 exportBuilding.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export UI Sprite");
+                ExportUISprite exportUISprite = new ExportUISprite();
+                exportUISprite.ExportAllUISprite();
+                exportUISprite.ExportJsonFile();
             }
         }
 
