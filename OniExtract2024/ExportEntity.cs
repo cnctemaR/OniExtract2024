@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 using OniExtract2024;
+using Klei.AI;
 
 public class ExportEntity : BaseExport
 {
@@ -211,6 +212,30 @@ public class ExportEntity : BaseExport
         else
         {
             bEntity.blightVulnerable = null;
+        }
+        PrickleGrass prickleGrass = gameObject.GetComponent<PrickleGrass>();
+        EvilFlower evilFlower = gameObject.GetComponent<EvilFlower>();
+        if (prickleGrass != null)
+        {
+            bEntity.decorToggler = new OutDecorToggler(prickleGrass);
+        }
+        else if (evilFlower != null)
+        {
+            bEntity.decorToggler = new OutDecorToggler(evilFlower);
+        }
+        else
+        {
+            bEntity.decorToggler = null;
+        }
+        WiltCondition wiltable = gameObject.GetComponent<WiltCondition>();
+        if (wiltable != null)
+        {
+            Modifiers wiltConditions = gameObject.GetComponent<Modifiers>();
+            bEntity.wiltConditions = new OutWiltConditions(wiltable, wiltConditions);
+        }
+        else
+        {
+            bEntity.wiltConditions = null;
         }
         //Critter
         DiseaseSourceVisualizer diseaseSourceVisualizer = gameObject.GetComponent<DiseaseSourceVisualizer>();

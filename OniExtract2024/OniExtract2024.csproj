@@ -119,6 +119,7 @@
     <Compile Include="model\OutBlightVulnerable.cs" />
     <Compile Include="model\OutComet.cs" />
     <Compile Include="model\OutDecorProvider.cs" />
+    <Compile Include="model\OutDecorToggler.cs" />
     <Compile Include="model\OutDrowningMonitor.cs" />
     <Compile Include="model\OutFactionAlignment.cs" />
     <Compile Include="model\OutGrowing.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="model\OutNavigator.cs" />
     <Compile Include="model\OutTemperatureVulnerable.cs" />
     <Compile Include="model\BUISprite.cs" />
+    <Compile Include="model\OutWiltConditions.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\AnimTool.cs" />
