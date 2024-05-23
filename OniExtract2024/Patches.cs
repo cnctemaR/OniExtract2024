@@ -35,6 +35,16 @@ namespace OniExtract2024
                 ExportDb exportDb = new ExportDb();
                 exportDb.AddDbResources();
                 exportDb.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export Buildings");
+                ExportBuilding exportBuilding = new ExportBuilding();
+                exportBuilding.ExportBuildMenu();
+                for (int indexBuilding = 0; indexBuilding < Assets.BuildingDefs.Count; ++indexBuilding)
+                {
+                    BuildingDef buildingDef = Assets.BuildingDefs[indexBuilding];
+                    exportBuilding.AddNewBuildingEntity(buildingDef);
+                    exportBuilding.AddNewBuildingDef(buildingDef);
+                }
+                exportBuilding.ExportJsonFile();
             }
         }
 
