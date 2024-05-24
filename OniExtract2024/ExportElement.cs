@@ -15,7 +15,7 @@ public class ExportElement : BaseExport
     {
         foreach (Element element in ElementLoader.elements)
         {
-            Debug.Log(element.tag.Name);
+            //Debug.Log(element.tag.Name);
             this.elementTable[((int)element.id)] = element;
 
             Substance substance = this.elementTable[((int)element.id)].substance;
@@ -25,7 +25,7 @@ public class ExportElement : BaseExport
                 {
                     if (!substance.material.HasProperty("_Color"))
                     {
-                        Debug.Log("No Property: " + element.tag.Name);
+                        //Debug.Log("No Property: " + element.tag.Name);
                         this.elementTable[((int)element.id)].substance.material.color = Color.clear;
                     }                    
                 }
