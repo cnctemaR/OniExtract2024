@@ -168,6 +168,6 @@
   </Target>
   <!--Copies the mod dll, the two yaml files and everything inside the ModAssets folder to the target mod folder-->
   <Target Name="CopyModsToDevFolder" AfterTargets="ILRepack" Condition="'$(AssemblyName)' != 'UtilLibs' and '$(AssemblyName)' != 'Util_TwitchIntegrationLib'">
-    <Copy SourceFiles="&#xD;&#xA;      $(TargetDir)$(TargetName).dll;&#xD;&#xA;      $(TargetDir)mod.yaml;&#xD;&#xA;      $(TargetDir)mod_info.yaml;" DestinationFolder="$(ModFolder)\$(TargetName)_dev\" />
+    <Copy SourceFiles="&#xD;&#xA;      $(TargetDir)PLib.dll;&#xD;&#xA;      $(TargetDir)$(TargetName).dll;&#xD;&#xA;      $(TargetDir)mod.yaml;&#xD;&#xA;      $(TargetDir)mod_info.yaml;" DestinationFolder="$(ModFolder)\$(TargetName)_dev\" />
   </Target>
 </Project>
