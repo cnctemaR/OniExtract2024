@@ -212,10 +212,14 @@ public class ExportDb : BaseExport
         {
             this.gameplaySeasons.Add(resource);
         }
-        foreach (var resource in Db.Get().PlantMutations.resources)
-        {
-            this.plantMutations.Add(resource);
+
+        if (DlcManager.IsExpansion1Active()) {
+            foreach (var resource in Db.Get().PlantMutations.resources)
+            {
+                this.plantMutations.Add(resource);
+            }
         }
+        
         foreach (var resource in Db.Get().Spices.resources)
         {
             this.spices.Add(new OutSpice(resource));

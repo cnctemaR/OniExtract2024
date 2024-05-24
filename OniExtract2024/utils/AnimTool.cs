@@ -85,13 +85,13 @@ namespace OniExtract2024.utils
             return CacheTexture[sprite];
         }
 
-        public static void WriteUISpriteToFile(Sprite sprite, string folder, string id, Color tint = default)
+        public static void WriteUISpriteToFile(Sprite sprite, string folder, string UIName, Color tint = default)
         {
             if (!Directory.Exists(folder))
             {
                 Directory.CreateDirectory(folder);
             }
-            string fileName = Path.Combine(folder, id + ".png");
+            string fileName = Path.Combine(folder, UIName + ".png");
             var tex = GetSingleSpriteFromTexture(sprite, tint);
 
             if (tex == null)

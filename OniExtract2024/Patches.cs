@@ -1,3 +1,4 @@
+using System;
 using HarmonyLib;
 using static GeyserGenericConfig;
 using System.Collections.Generic;
@@ -112,6 +113,22 @@ namespace OniExtract2024
                 //Debug.Log("OniExtract: " + "Export Equipments");
                 exportEquip.AddEquipmentDef(config);
                 exportEquip.ExportJsonFile();
+            }
+        }
+        
+        [HarmonyPatch(typeof(Localization), nameof(Localization.Initialize))]
+        internal class Localization_Initialize_Patch {
+            private static void AddStrings() {
+                if (Localization.GetCurrentLanguageCode() == "zh_klei") {
+                    Strings.Add(StringKeys.UINamePattern_Option_NAME, "UI图保存名称格式");
+                    Strings.Add(StringKeys.UINamePattern_Option_TOOLTIP, "模式字符串提示： {tag} 会被解析成物品 ID");
+                    return;
+                }
+                Strings.Add(StringKeys.UINamePattern_Option_NAME, "English UI图保存名称格式");
+                Strings.Add(StringKeys.UINamePattern_Option_NAME, "English 模式字符串提示： {tag} 会被解析成物品 ID");
+            }
+            private static void Postfix() {
+                AddStrings();
             }
         }
     }
