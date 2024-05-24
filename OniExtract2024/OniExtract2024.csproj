@@ -78,8 +78,6 @@
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
     <Compile Include="ExportElement.cs" />
-    <Compile Include="model\OutElement.cs" />
-    <Compile Include="model\OutSubstance.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

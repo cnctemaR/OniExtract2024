@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class ExportElement : BaseExport
 {
     public override string ExportFileName { get; set; } = "elements";
-    public Dictionary<int, OutElement> elementTable = new Dictionary<int, OutElement>();
+    public Dictionary<int, Element> elementTable;
 
     public ExportElement()
     {
@@ -12,9 +12,6 @@ public class ExportElement : BaseExport
 
     public void AddAllElement()
     {
-        foreach (var keyValue in ElementLoader.elementTable)
-        {
-            this.elementTable[keyValue.Key] = OutElement.GetOutElement(keyValue.Value);
-        }
+        this.elementTable = ElementLoader.elementTable;
     }
 }
