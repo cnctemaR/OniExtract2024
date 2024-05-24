@@ -16,5 +16,11 @@ namespace OniExtract2024
             this.textureName = sprite.texture.name;
             this.color = new BColor(color);
         }
+        public BUISprite(string id, Sprite sprite)
+        {
+            this.id = id;
+            this.spriteName = sprite.name;
+            this.textureName = sprite.texture.name;
+        }
     }
 }

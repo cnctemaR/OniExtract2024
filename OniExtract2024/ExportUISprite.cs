@@ -1,16 +1,19 @@
 ﻿using OniExtract2024;
 using OniExtract2024.utils;
+using Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using PeterHan.PLib.Core;
 using PeterHan.PLib.Options;
 using UnityEngine;
+using System.Linq;
 
 public class ExportUISprite : BaseExport
 {
     public override string ExportFileName { get; set; } = "uiSpriteInfo";
     public Dictionary<string, BUISprite> uiSpriteInfos = new Dictionary<string, BUISprite>();
+    public Dictionary<string, BUISprite> uiFacadeInfos = new Dictionary<string, BUISprite>();
 
     public ExportUISprite()
     {
@@ -19,6 +22,11 @@ public class ExportUISprite : BaseExport
     public void AddUISpriteInfo(KPrefabID prefabID, Tuple<Sprite, Color> tupleUISprite)
     {
         this.uiSpriteInfos[prefabID.PrefabTag.Name] = new BUISprite(prefabID.name, tupleUISprite.first, tupleUISprite.second);
+    }
+
+    public void AddFacadeInfos(string id, Sprite sprite)
+    {
+        this.uiFacadeInfos[id] = new BUISprite(id, sprite);
     }
 
     public void ExportAllUISprite()
@@ -64,6 +72,47 @@ public class ExportUISprite : BaseExport
                         AnimTool.WriteUISpriteToFile(UISprite, ExportIconDir, formattedName);
                         this.AddUISpriteInfo(prefab, tupleUISprite);
                     }
+                }
+            }
+        }
+        string[] facadeSetIds = new string[] {
+            Db.Get().Permits.BuildingFacades.Id,
+            Db.Get().Permits.EquippableFacades.Id,
+            Db.Get().Permits.ArtableStages.Id,
+            Db.Get().Permits.StickerBombs.Id,
+            Db.Get().Permits.ClothingItems.Id,
+            Db.Get().Permits.BalloonArtistFacades.Id
+        };
+        foreach (string facadeSetId in facadeSetIds)
+        {
+            if (!Db.Get().Permits.Permits.Keys.Contains(facadeSetId))
+            {
+                continue;
+            }
+            string ExportFacadeDir = Path.Combine(Util.RootFolder(), "export", "ui_image_facade", facadeSetId);
+            foreach (PermitResource permitResource in Db.Get().Permits.Permits[facadeSetId])
+            {
+                if (!(permitResource.Id == "Default"))
+                {
+                    Sprite UISprite = permitResource.GetPermitPresentationInfo().sprite;
+                    if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
+                    {
+                        AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir, permitResource.Id);
+                        this.AddFacadeInfos(permitResource.Id, UISprite);
+                    }
+                }
+            }
+        }
+        string ExportFacadeDir2 = Path.Combine(Util.RootFolder(), "export", "ui_image_facade", Db.Get().Permits.MonumentParts.Id);
+        foreach (MonumentPartResource monumentPart in Db.GetMonumentParts().resources)
+        {
+            if (!(monumentPart.Id == "Default"))
+            {
+                Sprite UISprite = Def.GetUISpriteFromMultiObjectAnim(monumentPart.AnimFile, monumentPart.State, false, monumentPart.SymbolName);
+                if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
+                {
+                    AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir2, monumentPart.Id);
+                    this.AddFacadeInfos(monumentPart.Id, UISprite);
                 }
             }
         }
