@@ -55,8 +55,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>$(GameLibsFolder)\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PLib, Version=4.15.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PLib.4.15.0\lib\net471\PLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -88,6 +92,7 @@
     <Compile Include="ExportBuilding.cs" />
     <Compile Include="ExportEntity.cs" />
     <Compile Include="ExportUISprite.cs" />
+    <Compile Include="Mod.cs" />
     <Compile Include="model\OutElement.cs" />
     <Compile Include="model\OutSubstance.cs" />
     <Compile Include="model\BColor.cs" />
@@ -138,6 +143,7 @@
     <Compile Include="model\OutTemperatureVulnerable.cs" />
     <Compile Include="model\BUISprite.cs" />
     <Compile Include="model\OutWiltConditions.cs" />
+    <Compile Include="ModOptions.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\AnimTool.cs" />
@@ -149,6 +155,7 @@
     <None Include="mod_info.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--Merges all dlls in the output folder into a single dll-->

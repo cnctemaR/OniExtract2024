@@ -3,6 +3,8 @@ using OniExtract2024.utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using PeterHan.PLib.Core;
+using PeterHan.PLib.Options;
 using UnityEngine;
 
 public class ExportUISprite : BaseExport
@@ -35,11 +37,12 @@ public class ExportUISprite : BaseExport
                     continue;
                 }
             }
+            var formattedName = GetFormatedUIImageFileName(prefab);
             Element element = ElementLoader.GetElement(prefab.PrefabTag);
             if (element != null)
             {
                 var tupleUISprite = Def.GetUISprite(element);
-                AnimTool.WriteUISpriteToFile(tupleUISprite.first, ExportIconDir, prefab.PrefabTag.Name, tupleUISprite.second);
+                AnimTool.WriteUISpriteToFile(tupleUISprite.first, ExportIconDir, formattedName, tupleUISprite.second);
                 this.AddUISpriteInfo(prefab, tupleUISprite);
             }
             else
@@ -58,11 +61,24 @@ public class ExportUISprite : BaseExport
                     Sprite UISprite = tupleUISprite.first;
                     if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
                     {
-                        AnimTool.WriteUISpriteToFile(UISprite, ExportIconDir, prefab.PrefabTag.Name);
+                        AnimTool.WriteUISpriteToFile(UISprite, ExportIconDir, formattedName);
                         this.AddUISpriteInfo(prefab, tupleUISprite);
                     }
                 }
             }
         }
+    }
+
+    private string GetFormatedUIImageFileName(KPrefabID prefab) {
+        
+        var pattern = SingletonOptions<ModOptions>.Instance.UINamePattern;
+        // 如果 pattern 设置为 "ui{0} {1}" 这种用序号作为占位符的，可以用
+        // var var1 = "tag";
+        // var var2 = "datetime";
+        //
+        // return string.Format(pattern, var1, var2); 
+        // 或者
+        // return pattern.F(var1, var2);
+        return pattern.Replace("{tag}", prefab.PrefabTag.Name);
     }
 }
