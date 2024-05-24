@@ -1,5 +1,4 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 using PeterHan.PLib.Options;
 
 namespace OniExtract2024 {

@@ -2,6 +2,7 @@ using System;
 using HarmonyLib;
 using static GeyserGenericConfig;
 using System.Collections.Generic;
+using PeterHan.PLib.Options;
 using UnityEngine;
 
 namespace OniExtract2024
@@ -53,42 +54,73 @@ namespace OniExtract2024
             private static void Postfix()
             {
                 //Debug.Log("OniExtract: " + "Export Food");
-                exportFood.ExportAllFood();
-                exportFood.ExportJsonFile();
-                //Debug.Log("OniExtract: " + "Export recipes");
-                ExportRecipe exportRecipe = new ExportRecipe();
-                exportRecipe.ExportComplexRecipes();
-                exportRecipe.ExportJsonFile();
-                //Debug.Log("OniExtract: " + "Export Elements");
-                ExportElement exportElement = new ExportElement();
-                exportElement.AddAllElement();
-                exportElement.ExportJsonFile();
-                //Debug.Log("OniExtract: " + "Export PO_string");
-                ExportPOString exportPOString = new ExportPOString();
-                exportPOString.ExportAll();
-                exportPOString.ExportJsonFile();
-                //Debug.Log("OniExtract: " + "Export Tags");
-                ExportTag exportTag = new ExportTag();
-                exportTag.AddAllGameTags();
-                exportTag.ExportJsonFile();
-                //Debug.Log("OniExtract: " + "Export Db");
-                ExportDb exportDb = new ExportDb();
-                exportDb.AddDbResources();
-                exportDb.ExportJsonFile();
-                //Debug.Log("OniExtract: " + "Export Buildings");
-                ExportBuilding exportBuilding = new ExportBuilding();
-                exportBuilding.ExportBuildMenu();
-                for (int indexBuilding = 0; indexBuilding < Assets.BuildingDefs.Count; ++indexBuilding)
+                if (SingletonOptions<ModOptions>.Instance.Food)
                 {
-                    BuildingDef buildingDef = Assets.BuildingDefs[indexBuilding];
-                    exportBuilding.AddNewBuildingEntity(buildingDef);
-                    exportBuilding.AddNewBuildingDef(buildingDef);
+                    exportFood.ExportAllFood();
+                    exportFood.ExportJsonFile();
                 }
-                exportBuilding.ExportJsonFile();
+
+                //Debug.Log("OniExtract: " + "Export recipes");
+                if (SingletonOptions<ModOptions>.Instance.Recipe)
+                {
+                    ExportRecipe exportRecipe = new ExportRecipe();
+                    exportRecipe.ExportComplexRecipes();
+                    exportRecipe.ExportJsonFile();
+                }
+
+                //Debug.Log("OniExtract: " + "Export Elements");
+                if (SingletonOptions<ModOptions>.Instance.Element)
+                {
+                    ExportElement exportElement = new ExportElement();
+                    exportElement.AddAllElement();
+                    exportElement.ExportJsonFile();
+                }
+
+                //Debug.Log("OniExtract: " + "Export PO_string");
+                if (SingletonOptions<ModOptions>.Instance.PoString)
+                {
+                    ExportPOString exportPOString = new ExportPOString();
+                    exportPOString.ExportAll();
+                    exportPOString.ExportJsonFile();
+                }
+
+                //Debug.Log("OniExtract: " + "Export Tags");
+                if (SingletonOptions<ModOptions>.Instance.Tags)
+                {
+                    ExportTag exportTag = new ExportTag();
+                    exportTag.AddAllGameTags();
+                    exportTag.ExportJsonFile();
+                }
+
+                //Debug.Log("OniExtract: " + "Export Db");
+                if (SingletonOptions<ModOptions>.Instance.db)
+                {
+                    ExportDb exportDb = new ExportDb();
+                    exportDb.AddDbResources();
+                    exportDb.ExportJsonFile();
+                }
+
+                //Debug.Log("OniExtract: " + "Export Buildings");
+                if (SingletonOptions<ModOptions>.Instance.Building)
+                {
+                    ExportBuilding exportBuilding = new ExportBuilding();
+                    exportBuilding.ExportBuildMenu();
+                    for (int indexBuilding = 0; indexBuilding < Assets.BuildingDefs.Count; ++indexBuilding)
+                    {
+                        BuildingDef buildingDef = Assets.BuildingDefs[indexBuilding];
+                        exportBuilding.AddNewBuildingEntity(buildingDef);
+                        exportBuilding.AddNewBuildingDef(buildingDef);
+                    }
+
+                    exportBuilding.ExportJsonFile();
+                }
+
                 //Debug.Log("OniExtract: " + "Export UI Sprite");
+                if (!SingletonOptions<ModOptions>.Instance.UISprintInfo) return;
                 ExportUISprite exportUISprite = new ExportUISprite();
                 exportUISprite.ExportAllUISprite();
                 exportUISprite.ExportJsonFile();
+
             }
         }
 
@@ -98,6 +130,7 @@ namespace OniExtract2024
             static void Postfix(ref List<GeyserPrefabParams> __result)
             {
                 //Debug.Log("OniExtract: " + "Export Geysers");
+                if (!SingletonOptions<ModOptions>.Instance.Geyser) return;
                 ExportGeyser exportGeyser = new ExportGeyser();
                 exportGeyser.AddGeyserPrefabParams(__result);
                 exportGeyser.ExportJsonFile();
@@ -111,25 +144,20 @@ namespace OniExtract2024
             private static void Postfix(IEquipmentConfig config)
             {
                 //Debug.Log("OniExtract: " + "Export Equipments");
+                if (!SingletonOptions<ModOptions>.Instance.Equipment) return;
                 exportEquip.AddEquipmentDef(config);
                 exportEquip.ExportJsonFile();
             }
         }
-        
+
         [HarmonyPatch(typeof(Localization), nameof(Localization.Initialize))]
-        internal class Localization_Initialize_Patch {
-            private static void AddStrings() {
-                if (Localization.GetCurrentLanguageCode() == "zh_klei") {
-                    Strings.Add(StringKeys.UINamePattern_Option_NAME, "UI图保存名称格式");
-                    Strings.Add(StringKeys.UINamePattern_Option_TOOLTIP, "模式字符串提示： {tag} 会被解析成物品 ID");
-                    return;
-                }
-                Strings.Add(StringKeys.UINamePattern_Option_NAME, "English UI图保存名称格式");
-                Strings.Add(StringKeys.UINamePattern_Option_NAME, "English 模式字符串提示： {tag} 会被解析成物品 ID");
-            }
-            private static void Postfix() {
-                AddStrings();
+        internal class Localization_Initialize_Patch
+        {
+            private static void Postfix()
+            {
+                LocString.CreateLocStringKeys(typeof(ModStrings.Options));
             }
         }
+        
     }
 }

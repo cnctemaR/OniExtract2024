@@ -142,6 +142,7 @@
     <Compile Include="model\BUISprite.cs" />
     <Compile Include="model\OutWiltConditions.cs" />
     <Compile Include="ModOptions.cs" />
+    <Compile Include="ModStrings.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\AnimTool.cs" />
@@ -154,6 +155,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--Merges all dlls in the output folder into a single dll-->
