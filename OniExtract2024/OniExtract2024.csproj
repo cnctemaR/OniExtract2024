@@ -93,8 +93,6 @@
     <Compile Include="ExportEntity.cs" />
     <Compile Include="ExportUISprite.cs" />
     <Compile Include="Mod.cs" />
-    <Compile Include="model\OutElement.cs" />
-    <Compile Include="model\OutSubstance.cs" />
     <Compile Include="model\BColor.cs" />
     <Compile Include="model\OutChoreGroup.cs" />
     <Compile Include="model\OutChoreType.cs" />
