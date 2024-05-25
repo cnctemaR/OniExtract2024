@@ -50,12 +50,12 @@ namespace OniExtract2024
         [HarmonyPatch(typeof(LegacyModMain), "Load")]
         internal class OniExtract_Game_LegacyModMain
         {
-            static ExportFood exportFood = new ExportFood();
             private static void Postfix()
             {
                 //Debug.Log("OniExtract: " + "Export Food");
                 if (SingletonOptions<ModOptions>.Instance.Food)
                 {
+                    ExportFood exportFood = new ExportFood();
                     exportFood.ExportAllFood();
                     exportFood.ExportJsonFile();
                 }
@@ -116,10 +116,12 @@ namespace OniExtract2024
                 }
 
                 //Debug.Log("OniExtract: " + "Export UI Sprite");
-                if (!SingletonOptions<ModOptions>.Instance.UISprintInfo) return;
-                ExportUISprite exportUISprite = new ExportUISprite();
-                exportUISprite.ExportAllUISprite();
-                exportUISprite.ExportJsonFile();
+                if (SingletonOptions<ModOptions>.Instance.UISprintInfo)
+                {
+                    ExportUISprite exportUISprite = new ExportUISprite();
+                    exportUISprite.ExportAllUISprite();
+                    exportUISprite.ExportJsonFile();
+                }
 
             }
         }

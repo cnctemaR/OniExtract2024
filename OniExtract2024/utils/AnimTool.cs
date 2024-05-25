@@ -93,9 +93,7 @@ namespace OniExtract2024.utils
             }
             string fileName = Path.Combine(folder, UIName + ".png");
 
-#if DEBUG
-            Debug.Log(fileName);
-#else
+            //Debug.Log(fileName);
             var tex = GetSingleSpriteFromTexture(sprite, tint);
 
             if (tex == null)
@@ -103,7 +101,6 @@ namespace OniExtract2024.utils
 
             var imageBytes = tex.EncodeToPNG();
             File.WriteAllBytes(fileName, imageBytes);
-#endif
         }
     }
 }
