@@ -5,6 +5,7 @@ namespace OniExtract2024
     public class BUISprite
     {
         public string id;
+        public string name;
         public string spriteName;
         public string textureName;
         public BColor color = null;
