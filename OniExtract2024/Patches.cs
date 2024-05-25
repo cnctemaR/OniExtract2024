@@ -7,10 +7,10 @@ namespace OniExtract2024
         [HarmonyPatch(typeof(LegacyModMain), "Load")]
         internal class OniExtract_Game_LegacyModMain
         {
-            static ExportFood exportFood = new ExportFood();
             private static void Postfix()
             {
                 //Debug.Log("OniExtract: " + "Export Food");
+                ExportFood exportFood = new ExportFood();
                 exportFood.ExportAllFood();
                 exportFood.ExportJsonFile();
             }
