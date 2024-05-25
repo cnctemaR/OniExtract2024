@@ -98,8 +98,7 @@ public class ExportUISprite : BaseExport
                     
                     if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
                     {
-                        AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir, 
-                            UI.StripLinkFormatting(GetFacadeUIImageFileName(permitResource)));
+                        AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir, GetFacadeUIImageFileName(permitResource));
                         this.AddFacadeInfos(permitResource.Id, UISprite);
                     }
                 }
@@ -124,7 +123,7 @@ public class ExportUISprite : BaseExport
     {
         return SingletonOptions<ModOptions>.Instance.SaveUIFileName == ModOptions.SaveNameMod.ID
             ? permitResource.Id
-            : permitResource.Name;
+            : UI.StripLinkFormatting(permitResource.Name);
     }
     
     private string GetFormatedUIImageFileName(KPrefabID prefab)
