@@ -19,16 +19,10 @@ public class ExportElement : BaseExport
             this.elementTable[((int)element.id)] = element;
 
             Substance substance = this.elementTable[((int)element.id)].substance;
-            if (substance != null)
+            if (!(substance == null || substance.material == null || substance.material.HasProperty("_Color")))
             {
-                if (substance.material != null)
-                {
-                    if (!substance.material.HasProperty("_Color"))
-                    {
-                        //Debug.Log("No Property: " + element.tag.Name);
-                        this.elementTable[((int)element.id)].substance.material.color = Color.clear;
-                    }                    
-                }
+                //Debug.Log("No Property: " + element.tag.Name);
+                this.elementTable[((int)element.id)].substance.material.color = Color.clear;
             }
         }
     }
