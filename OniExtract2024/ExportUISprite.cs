@@ -4,10 +4,10 @@ using Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using PeterHan.PLib.Core;
 using PeterHan.PLib.Options;
 using UnityEngine;
 using System.Linq;
+using STRINGS;
 
 public class ExportUISprite : BaseExport
 {
@@ -95,9 +95,11 @@ public class ExportUISprite : BaseExport
                 if (!(permitResource.Id == "Default"))
                 {
                     Sprite UISprite = permitResource.GetPermitPresentationInfo().sprite;
+                    
                     if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
                     {
-                        AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir, permitResource.Id);
+                        AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir, 
+                            UI.StripLinkFormatting(GetFacadeUIImageFileName(permitResource)));
                         this.AddFacadeInfos(permitResource.Id, UISprite);
                     }
                 }
@@ -118,16 +120,21 @@ public class ExportUISprite : BaseExport
         }
     }
 
-    private string GetFormatedUIImageFileName(KPrefabID prefab) {
-        
-        var pattern = SingletonOptions<ModOptions>.Instance.UINamePattern;
-        // 如果 pattern 设置为 "ui{0} {1}" 这种用序号作为占位符的，可以用
-        // var var1 = "tag";
-        // var var2 = "datetime";
-        //
-        // return string.Format(pattern, var1, var2); 
-        // 或者
-        // return pattern.F(var1, var2);
-        return pattern.Replace("{tag}", prefab.PrefabTag.Name);
+    private string GetFacadeUIImageFileName(PermitResource permitResource)
+    {
+        return SingletonOptions<ModOptions>.Instance.SaveUIFileName == ModOptions.SaveNameMod.ID
+            ? permitResource.Id
+            : permitResource.Name;
+    }
+    
+    private string GetFormatedUIImageFileName(KPrefabID prefab)
+    {
+        if (SingletonOptions<ModOptions>.Instance.SaveUIFileName == ModOptions.SaveNameMod.ID)
+            return prefab.PrefabTag.Name;
+
+        var properName = TagManager.GetProperName(prefab.PrefabID(), true);
+        if (!properName.Equals("")) return properName;
+        var instance = Assets.GetPrefab(prefab.PrefabTag);
+        return instance == null ? prefab.PrefabTag.Name : UI.StripLinkFormatting(instance.GetProperName());
     }
 }
