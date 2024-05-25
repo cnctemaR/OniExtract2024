@@ -1,4 +1,4 @@
-﻿using OniExtract2024;
+using OniExtract2024;
 using OniExtract2024.utils;
 using Database;
 using System;
@@ -134,7 +134,11 @@ public class ExportUISprite : BaseExport
     {
         if (SingletonOptions<ModOptions>.Instance.SaveUIFileName == ModOptions.SaveNameMod.ID)
             return prefab.PrefabTag.Name;
+        return GetProperName(prefab);
+    }
 
+    private string GetProperName(KPrefabID prefab)
+    {
         var properName = TagManager.GetProperName(prefab.PrefabID(), true);
         if (!properName.Equals("")) return properName;
         var instance = Assets.GetPrefab(prefab.PrefabTag);
