@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using System.Linq;
+using STRINGS;
 
 public class ExportUISprite : BaseExport
 {
@@ -17,14 +18,18 @@ public class ExportUISprite : BaseExport
     {
     }
 
-    public void AddUISpriteInfo(KPrefabID prefabID, Tuple<Sprite, Color> tupleUISprite)
+    public void AddUISpriteInfo(KPrefabID prefabID, Tuple<Sprite, Color> tupleUISprite, string properName)
     {
-        this.uiSpriteInfos[prefabID.PrefabTag.Name] = new BUISprite(prefabID.name, tupleUISprite.first, tupleUISprite.second);
+        this.uiSpriteInfos[prefabID.PrefabTag.Name] = new BUISprite(prefabID.name, tupleUISprite.first, tupleUISprite.second) {
+            name = properName
+        };
     }
 
-    public void AddFacadeInfos(string id, Sprite sprite)
+    public void AddFacadeInfos(string id, Sprite sprite, string properName)
     {
-        this.uiFacadeInfos[id] = new BUISprite(id, sprite);
+        this.uiFacadeInfos[id] = new BUISprite(id, sprite) {
+            name = properName
+        };
     }
 
     public void ExportAllUISprite()
@@ -48,7 +53,7 @@ public class ExportUISprite : BaseExport
             {
                 var tupleUISprite = Def.GetUISprite(element);
                 AnimTool.WriteUISpriteToFile(tupleUISprite.first, ExportIconDir, prefab.PrefabTag.Name, tupleUISprite.second);
-                this.AddUISpriteInfo(prefab, tupleUISprite);
+                this.AddUISpriteInfo(prefab, tupleUISprite, GetProperName(prefab));
             }
             else
             {
@@ -67,7 +72,7 @@ public class ExportUISprite : BaseExport
                     if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
                     {
                         AnimTool.WriteUISpriteToFile(UISprite, ExportIconDir, prefab.PrefabTag.Name);
-                        this.AddUISpriteInfo(prefab, tupleUISprite);
+                        this.AddUISpriteInfo(prefab, tupleUISprite, GetProperName(prefab));
                     }
                 }
             }
@@ -95,7 +100,7 @@ public class ExportUISprite : BaseExport
                     if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
                     {
                         AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir, permitResource.Id);
-                        this.AddFacadeInfos(permitResource.Id, UISprite);
+                        this.AddFacadeInfos(permitResource.Id, UISprite, UI.StripLinkFormatting(permitResource.Name));
                     }
                 }
             }
@@ -109,9 +114,17 @@ public class ExportUISprite : BaseExport
                 if (UISprite != null && UISprite != Assets.GetSprite("unknown"))
                 {
                     AnimTool.WriteUISpriteToFile(UISprite, ExportFacadeDir2, monumentPart.Id);
-                    this.AddFacadeInfos(monumentPart.Id, UISprite);
+                    this.AddFacadeInfos(monumentPart.Id, UISprite, UI.StripLinkFormatting(monumentPart.Name));
                 }
             }
         }
+    }
+
+    private string GetProperName(KPrefabID prefab)
+    {
+        var properName = TagManager.GetProperName(prefab.PrefabID(), true);
+        if (!properName.Equals("")) return properName;
+        var instance = Assets.GetPrefab(prefab.PrefabTag);
+        return instance == null ? prefab.PrefabTag.Name : UI.StripLinkFormatting(instance.GetProperName());
     }
 }
