@@ -46,6 +46,15 @@ export
 │    ├─ geyser.json
 │    ├─ po_string.json
 │    ├─ recipe.json
-│    └─ tags.json
-└─ ui_image
+│    ├─ tags.json
+│    └─ uiSpriteInfo.json
+├─ ui_image
+└─ ui_image_facade
+       ├─ ArtableStages
+       ├─ BalloonArtistFacades
+       ├─ BuildingFacades
+       ├─ ClothingItems
+       ├─ EquippableFacades
+       ├─ MonumentParts
+       └─ StickerBombs
 ```
