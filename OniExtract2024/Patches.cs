@@ -45,6 +45,7 @@ namespace OniExtract2024
 
                 if (insertionIndex != -1)
                 {
+                    if (!SingletonOptions<ModOptions>.Instance.Entities) return code;
                     code.Insert(++insertionIndex, new CodeInstruction(OpCodes.Call, RegisterExportEntityMethod));
                 }
                 return code;
@@ -127,7 +128,12 @@ namespace OniExtract2024
                     exportUISprite.ExportJsonFile();
                 }
 
-                exportEntity.ExportJsonFile();
+                //Debug.Log("OniExtract: " + "Export Entity");
+                if (SingletonOptions<ModOptions>.Instance.Entities)
+                {
+                    exportEntity.ExportJsonFile();
+                }
+
             }
         }
 
