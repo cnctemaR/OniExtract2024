@@ -15,64 +15,8 @@ public class ExportEntity : BaseExport
         entities = new List<BEntity>();
     }
 
-    public static void ExportAllEntity(ExportEntity export)
+    public static void LoadEntityComponent(GameObject gameObject, BEntity bEntity)
     {
-        List<System.Type> types = new List<System.Type>();
-        foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-        {
-            System.Type[] types2 = assembly.GetTypes();
-            if (types2 != null)
-                types.AddRange((IEnumerable<System.Type>)types2);
-        }
-        System.Type type1 = typeof(IEntityConfig);
-        System.Type type2 = typeof(IMultiEntityConfig);
-        List<System.Type> configEntryTypes = new List<System.Type>();
-        foreach (System.Type type3 in types)
-        {
-            if ((type1.IsAssignableFrom(type3) || type2.IsAssignableFrom(type3)) && !type3.IsAbstract && !type3.IsInterface)
-            {
-                configEntryTypes.Add(type3);
-            }
-        }
-        foreach (System.Type type in configEntryTypes)
-        {
-            object instance = Activator.CreateInstance(type);
-            if (instance is IEntityConfig)
-            {
-                var dlcIds = (instance as IEntityConfig).GetDlcIds();
-                if (DlcManager.IsDlcListValidForCurrentContent(dlcIds))
-                {
-                    //this.RegisterEntity(instance as IEntityConfig);
-                    //export.configEntries.Add(configEntry);
-
-                    IEntityConfig config = instance as IEntityConfig;
-                    GameObject gameObject = config.CreatePrefab();
-                    KPrefabID component = gameObject.GetComponent<KPrefabID>();
-                    component.prefabInitFn += new KPrefabID.PrefabFn(config.OnPrefabInit);
-                    component.prefabSpawnFn += new KPrefabID.PrefabFn(config.OnSpawn);
-                    Assets.AddPrefab(component);
-                    BEntity bEntity = new BEntity(gameObject.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags);
-                    LoadEntityComponent(gameObject, bEntity, dlcIds);
-                    export.entities.Add(bEntity);
-                }
-            }
-            if (instance is IMultiEntityConfig)
-            {
-                //this.RegisterEntities(instance as IMultiEntityConfig);
-            }
-        }
-        export.ExportJsonFile();
-    }
-
-    public static void LoadEntityComponent(GameObject gameObject, BEntity bEntity, string[] dlcIds)
-    {
-        if (dlcIds != null)
-        {
-            foreach (string dlcId in dlcIds)
-            {
-                bEntity.dlcIds.Add(dlcId);
-            }
-        }
         KBoxCollider2D kBoxCollider2D = gameObject.GetComponent<KBoxCollider2D>();
         if (kBoxCollider2D != null)
         {

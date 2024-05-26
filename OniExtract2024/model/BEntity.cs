@@ -6,7 +6,7 @@ namespace OniExtract2024
     {
         public string name;
         public string nameString;
-        public List<string> dlcIds = new List<string>();
+        public string[] dlcIds = null;
         public HashSet<Tag> tags;
         //public AirFilter airFilter;
         //public AlgaeDistillery algaeDistillery;
