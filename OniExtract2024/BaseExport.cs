@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using Path = System.IO.Path;
 
@@ -9,32 +10,23 @@ namespace OniExtract2024
         public virtual string DatabaseDirName { get; set; } = "database";
         public virtual string ExportFileName { get; set; } = "database";
         public string buildVersion = BuildWatermark.GetBuildText();
-        public string[] dlcs = GetDlcs();
+        public List<string> dlcs = new List<string>(); 
+
+        public BaseExport()
+        {
+            foreach (string dlc in DlcManager.GetActiveDLCIds())
+            {
+                dlcs.Add(dlc);
+            }
+            if(!dlcs.Contains(DlcManager.VANILLA_ID))
+            {
+                dlcs.Add(DlcManager.VANILLA_ID);
+            }
+        }
 
         public string GetDatabaseLocation()
         {
             return Path.Combine(Util.RootFolder(), "export", DatabaseDirName);
-        }
-
-        public static string[] GetDlcs()
-        {
-            bool base_only = DlcManager.IsDlcListValidForCurrentContent(DlcManager.AVAILABLE_VANILLA_ONLY);
-            bool dlc1_only = DlcManager.IsDlcListValidForCurrentContent(DlcManager.AVAILABLE_EXPANSION1_ONLY);
-            bool all_available = DlcManager.IsDlcListValidForCurrentContent(DlcManager.AVAILABLE_ALL_VERSIONS);
-            if (all_available)
-            {
-                if (base_only) return DlcManager.AVAILABLE_VANILLA_ONLY;
-                else return DlcManager.AVAILABLE_ALL_VERSIONS;
-            }
-            else if (base_only)
-            {
-                return DlcManager.AVAILABLE_VANILLA_ONLY;
-            }
-            else if (dlc1_only)
-            {
-                return DlcManager.AVAILABLE_EXPANSION1_ONLY;
-            }
-            return null;
         }
 
         public void ExportJsonFile()
