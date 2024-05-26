@@ -1,8 +1,10 @@
+English | [简体中文](README_cn.md)
+
 # OniExtract2024
 
 Dumps game data and images from game **Oxygen Not Included**.
 
-Compiled under VS2022 for ONI version **U51-600112**.
+Compiled under **Visual Studio 2022** for ONI version **U51-600112**.
 
 ## SteamDB Info
 
@@ -25,10 +27,22 @@ download_depot <AppID> <DepotsID> <ManifestID>
 1. Open `OniExtract2024\OniExtract2024.csproj` in **Visual Studio Code**.
 2. Check `<GameLibsFolder>` , adjust to your own game installation.
 3. Check `<ModFolder>` , adjust to your mod installation.
+4. Open `OniExtract2024.sln` in **Visual Studio**. Load up solution, click `Build`-`Build Solution`. 
+5. Mod will be installed to your mod installation. default path: `Documents\Klei\OxygenNotIncluded\mods\dev`.
 
-4. open `OniExtract2024.sln` in **Visual Studio**. Load up solution, click `build`. 
+## Install
 
-Enable the mod in game. Output will be in `Documents\Klei\OxygenNotIncluded\export`.
+### From Build
+
+1. Build project.
+2. Check your mod installation. default path: `Documents\Klei\OxygenNotIncluded\mods\dev`.
+
+### From Releases
+
+1. Download package from **Releases**. Unzip package.
+2. Copy **unzipped folder** to `Documents\Klei\OxygenNotIncluded\mods\dev` 
+
+Enable the mod in game. Restart game. Output will be in `Documents\Klei\OxygenNotIncluded\export`.
 
 ## Output Result
 
