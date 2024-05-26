@@ -1,5 +1,8 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Reflection;
 using UnityEngine;
 
 namespace OniExtract2024
@@ -29,18 +32,30 @@ namespace OniExtract2024
         [HarmonyPatch(typeof(EntityConfigManager), "RegisterEntity")]
         internal class OniExtract_Game_EntityConfig
         {
+            private static readonly MethodInfo InjectBehind = AccessTools.Method(typeof(IEntityConfig), nameof(IEntityConfig.CreatePrefab));
+            private static readonly MethodInfo RegisterExportEntityMethod = AccessTools.Method(typeof(OniExtract_Game_EntityConfig), nameof(OniExtract_Game_EntityConfig.RegisterPatch));
             static ExportEntity exportEntity = new ExportEntity();
-            static void Postfix(IEntityConfig config)
+
+            public static GameObject RegisterPatch(GameObject gameObject)
             {
-                //Debug.Log("OniExtract: " + "Export Entity");
-                GameObject gameObject = config.CreatePrefab();
                 KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
-                //Debug.Log(prefabID.PrefabID().Name);
                 BEntity bEntity = new BEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags);
-                var dlcIds = config.GetDlcIds();
-                ExportEntity.LoadEntityComponent(gameObject, bEntity, dlcIds);
+                ExportEntity.LoadEntityComponent(gameObject, bEntity);
                 exportEntity.entities.Add(bEntity);
                 exportEntity.ExportJsonFile();
+                return gameObject;
+            }
+
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
+            {
+                var code = instructions.ToList();
+                var insertionIndex = code.FindIndex(ci => ci.Calls(InjectBehind));
+
+                if (insertionIndex != -1)
+                {
+                    code.Insert(++insertionIndex, new CodeInstruction(OpCodes.Call, RegisterExportEntityMethod));
+                }
+                return code;
             }
         }
 
