@@ -12,6 +12,7 @@ namespace OniExtract2024
             {
                 //Debug.Log("OniExtract: " + "Export Codex");
                 exportCodex.AddCategoryEntry(CodexCache.entries);
+                exportCodex.AddCategoryTree(CodexCache.entries);
                 exportCodex.ExportJsonFile();
             }
         }

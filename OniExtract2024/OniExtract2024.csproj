@@ -79,6 +79,7 @@
     <Compile Include="BaseExport.cs" />
     <Compile Include="ExportCodex.cs" />
     <Compile Include="model\BColor.cs" />
+    <Compile Include="model\BTreeNode.cs" />
     <Compile Include="model\OutCodexEntry.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
