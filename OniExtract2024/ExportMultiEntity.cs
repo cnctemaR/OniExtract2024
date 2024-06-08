@@ -42,92 +42,50 @@ public class ExportMultiEntity : BaseExport
         {
             bEntity.primaryElement = new OutPrimaryElement(primaryElement);
         }
-        else
-        {
-            bEntity.primaryElement = null;
-        }
         InfoDescription infoDescription = gameObject.GetComponent<InfoDescription>();
         if (infoDescription != null)
         {
             bEntity.infoDescription = infoDescription;
         }
-        else
-        {
-            bEntity.infoDescription = null;
-        }
         HarvestablePOIConfigurator harvestablePOIConfigurator = gameObject.GetComponent<HarvestablePOIConfigurator>();
         if (harvestablePOIConfigurator != null)
         {
-            bEntity.harvestablePOIConfigurator = harvestablePOIConfigurator;
             bEntity.harvestablePOIType = HarvestablePOIConfigurator.FindType(harvestablePOIConfigurator.presetType);
-        }
-        else
-        {
-            bEntity.harvestablePOIConfigurator = null;
-            bEntity.harvestablePOIType = null;
         }
         HarvestablePOIClusterGridEntity harvestablePOIClusterGridEntity = gameObject.GetComponent<HarvestablePOIClusterGridEntity>();
         if (harvestablePOIClusterGridEntity != null)
         {
             bEntity.harvestablePOIClusterGridEntity = harvestablePOIClusterGridEntity;
         }
-        else
-        {
-            bEntity.harvestablePOIClusterGridEntity = null;
-        }
         ArtifactPOIConfigurator artifactPOIConfigurator = gameObject.GetComponent<ArtifactPOIConfigurator>();
         if (artifactPOIConfigurator != null)
         {
             bEntity.artifactPOIConfigurator = artifactPOIConfigurator;
-        }
-        else
-        {
-            bEntity.artifactPOIConfigurator = null;
         }
         ClusterDestinationSelector clusterDestinationSelector = gameObject.GetComponent<ClusterDestinationSelector>();
         if (clusterDestinationSelector != null)
         {
             bEntity.clusterDestinationSelector = clusterDestinationSelector;
         }
-        else
-        {
-            bEntity.clusterDestinationSelector = null;
-        }
         ClusterMapMeteorShowerVisualizer clusterMapMeteorShowerVisualizer = gameObject.GetComponent<ClusterMapMeteorShowerVisualizer>();
         if (clusterMapMeteorShowerVisualizer != null)
         {
             bEntity.clusterMapMeteorShowerVisualizer = new OutClusterMapMeteorShowerVisualizer(clusterMapMeteorShowerVisualizer);
-        }
-        else
-        {
-            bEntity.clusterMapMeteorShowerVisualizer = null;
         }
         ClusterTraveler clusterTraveler = gameObject.GetComponent<ClusterTraveler>();
         if (clusterTraveler != null)
         {
             bEntity.clusterTraveler = new OutClusterTraveler(clusterTraveler);
         }
-        else
-        {
-            bEntity.clusterTraveler = null;
-        }
         ClusterMapMeteorShower.Def clusterMapMeteorShowerDef = gameObject.GetDef<ClusterMapMeteorShower.Def>();
         if (clusterMapMeteorShowerDef != null)
         {
             bEntity.clusterMapMeteorShowerDef = clusterMapMeteorShowerDef;
         }
-        else
-        {
-            bEntity.clusterMapMeteorShowerDef = null;
-        }
         ArtifactPOIClusterGridEntity artifactPOIClusterGridEntity = gameObject.GetComponent<ArtifactPOIClusterGridEntity>();
         if (artifactPOIClusterGridEntity != null)
         {
             bEntity.artifactPOIClusterGridEntity = artifactPOIClusterGridEntity;
-        }
-        else
-        {
-            bEntity.artifactPOIClusterGridEntity = null;
         }
     }
 }

@@ -10,13 +10,16 @@ namespace OniExtract2024
     {
         public CellOffset[] _UnrotatedOccupiedCellsOffsets;
         public CellOffset[] _RotatedOccupiedCellsOffsets;
-        public ObjectLayer[] objectLayers = new ObjectLayer[0];
+        public List<string> objectLayers = new List<string>();
 
         public OutOccupyArea(OccupyArea obj)
         {
             this._UnrotatedOccupiedCellsOffsets = obj._UnrotatedOccupiedCellsOffsets;
             this._RotatedOccupiedCellsOffsets = obj._RotatedOccupiedCellsOffsets;
-            this.objectLayers = obj.objectLayers;
+            foreach(ObjectLayer objectLayer in obj.objectLayers)
+            {
+                this.objectLayers.Add(objectLayer.GetType().Name);
+            }
         }
     }
 }
