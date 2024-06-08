@@ -6,6 +6,7 @@ namespace OniExtract2024
     {
         public string name;
         public string nameString;
+        public string entityType;
         public HashSet<Tag> tags;
         public BVector2 kBoxCollider2D = null;
         public OutOccupyArea occupyArea = null;

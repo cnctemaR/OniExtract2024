@@ -16,13 +16,21 @@ namespace OniExtract2024
         {
             private static readonly MethodInfo InjectBehind = AccessTools.Method(typeof(IMultiEntityConfig), nameof(IMultiEntityConfig.CreatePrefabs));
             private static readonly MethodInfo RegisterExportEntityMethod = AccessTools.Method(typeof(OniExtract_Game_IMultiEntityConfig), nameof(OniExtract_Game_IMultiEntityConfig.RegisterPatch));
+            static string entityType = null;
+
+            public static void Prefix(IMultiEntityConfig config)
+            {
+                entityType = config.GetType().Name;
+            }
 
             public static List<GameObject> RegisterPatch(List<GameObject> gameObjects)
             {
                 foreach (var gameObject in gameObjects)
                 {
                     KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
-                    BMultiEntity BMultiEntity = new BMultiEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags);
+                    BMultiEntity BMultiEntity = new BMultiEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags) {
+                        entityType = entityType
+                    };
                     ExportMultiEntity.LoadEntityComponent(gameObject, BMultiEntity);
                     exportMultiEntity.multiEntities.Add(BMultiEntity);
                 }
