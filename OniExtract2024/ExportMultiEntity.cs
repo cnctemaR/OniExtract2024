@@ -62,6 +62,16 @@ public class ExportMultiEntity : BaseExport
         {
             bEntity.artifactPOIConfigurator = artifactPOIConfigurator;
         }
+        GeyserConfigurator geyserConfigurator = gameObject.GetComponent<GeyserConfigurator>();
+        if (geyserConfigurator != null)
+        {
+            bEntity.geyserType = GeyserConfigurator.FindType(geyserConfigurator.presetType);
+        }
+        Studyable studyable = gameObject.GetComponent<Studyable>();
+        if (studyable != null)
+        {
+            bEntity.studyable = studyable;
+        }
         ClusterDestinationSelector clusterDestinationSelector = gameObject.GetComponent<ClusterDestinationSelector>();
         if (clusterDestinationSelector != null)
         {
