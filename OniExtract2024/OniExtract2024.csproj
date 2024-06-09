@@ -91,6 +91,7 @@
     <Compile Include="ExportDb.cs" />
     <Compile Include="ExportBuilding.cs" />
     <Compile Include="ExportEntity.cs" />
+    <Compile Include="ExportMultiEntity.cs" />
     <Compile Include="ExportUISprite.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="model\BColor.cs" />
@@ -141,6 +142,11 @@
     <Compile Include="model\OutTemperatureVulnerable.cs" />
     <Compile Include="model\BUISprite.cs" />
     <Compile Include="model\OutWiltConditions.cs" />
+    <Compile Include="model\BMultiEntity.cs" />
+    <Compile Include="model\OutClusterMapMeteorShowerVisualizer.cs" />
+    <Compile Include="model\OutClusterTraveler.cs" />
+    <Compile Include="model\OutMeteorShowerEvent.cs" />
+    <Compile Include="model\OutOccupyArea.cs" />
     <Compile Include="ModOptions.cs" />
     <Compile Include="ModStrings.cs" />
     <Compile Include="Patches.cs" />
