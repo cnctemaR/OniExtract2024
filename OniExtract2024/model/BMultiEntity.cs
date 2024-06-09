@@ -23,6 +23,7 @@ namespace OniExtract2024
         public OutClusterMapMeteorShowerVisualizer clusterMapMeteorShowerVisualizer = null;
         public OutClusterTraveler clusterTraveler = null;
         public ClusterMapMeteorShower.Def clusterMapMeteorShowerDef = null;
+        public OutMeteorShowerEvent meteorShowerEvent = null;
         public ArtifactPOIClusterGridEntity artifactPOIClusterGridEntity = null;
 
         public BMultiEntity(string name, HashSet<Tag> tags)

@@ -83,6 +83,7 @@
     <Compile Include="model\OutClusterMapMeteorShowerVisualizer.cs" />
     <Compile Include="model\OutClusterTraveler.cs" />
     <Compile Include="model\OutDecorProvider.cs" />
+    <Compile Include="model\OutMeteorShowerEvent.cs" />
     <Compile Include="model\OutOccupyArea.cs" />
     <Compile Include="model\OutPickupable.cs" />
     <Compile Include="model\OutPrimaryElement.cs" />

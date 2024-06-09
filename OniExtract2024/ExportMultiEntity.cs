@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Reflection;
 using OniExtract2024;
 using Klei.AI;
 
@@ -9,13 +7,22 @@ public class ExportMultiEntity : BaseExport
 {
     public override string ExportFileName { get; set; } = "multiEntities";
     public List<BMultiEntity> multiEntities;
+    private Dictionary<string, OutMeteorShowerEvent> meteorShowerEventMap = new Dictionary<string, OutMeteorShowerEvent>();
 
     public ExportMultiEntity()
     {
         multiEntities = new List<BMultiEntity>();
     }
 
-    public static void LoadEntityComponent(GameObject gameObject, BMultiEntity bEntity)
+    public void addNewMeteorShowerEvent(OutMeteorShowerEvent obj)
+    {
+        if(!meteorShowerEventMap.ContainsKey(obj.id))
+        {
+            meteorShowerEventMap.Add(obj.id, obj);
+        }
+    }
+
+    public void LoadEntityComponent(GameObject gameObject, BMultiEntity bEntity)
     {
         KBoxCollider2D kBoxCollider2D = gameObject.GetComponent<KBoxCollider2D>();
         if (kBoxCollider2D != null)
@@ -91,6 +98,13 @@ public class ExportMultiEntity : BaseExport
         if (clusterMapMeteorShowerDef != null)
         {
             bEntity.clusterMapMeteorShowerDef = clusterMapMeteorShowerDef;
+            if (meteorShowerEventMap.ContainsKey(clusterMapMeteorShowerDef.eventID))
+            {
+                OutMeteorShowerEvent meteorShowerEvent = meteorShowerEventMap[clusterMapMeteorShowerDef.eventID];
+                GameplayEvent gameplayEvent = Db.Get().GameplayEvents.Get(clusterMapMeteorShowerDef.eventID);
+                meteorShowerEvent.SetMeteorShowerEventData(gameplayEvent as MeteorShowerEvent);
+                bEntity.meteorShowerEvent = meteorShowerEvent;
+            }
         }
         ArtifactPOIClusterGridEntity artifactPOIClusterGridEntity = gameObject.GetComponent<ArtifactPOIClusterGridEntity>();
         if (artifactPOIClusterGridEntity != null)
