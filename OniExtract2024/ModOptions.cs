@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using PeterHan.PLib.Options;
 
 namespace OniExtract2024
@@ -19,7 +19,11 @@ namespace OniExtract2024
         [JsonProperty]
         [Option("STRINGS.Options.JsonData.Entities", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
         public bool Entities { get; set; } = true;
-        
+
+        [JsonProperty]
+        [Option("STRINGS.Options.JsonData.MultiEntities", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
+        public bool MultiEntities { get; set; } = true;
+
         [JsonProperty]
         [Option("STRINGS.Options.JsonData.Element", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
         public bool Element { get; set; } = true;

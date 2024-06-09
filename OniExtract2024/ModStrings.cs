@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace OniExtract2024
 {
@@ -13,6 +13,7 @@ namespace OniExtract2024
                 public static LocString Element = "Element";
                 public static LocString db = "DataBase";
                 public static LocString Entities = "Entities";
+                public static LocString MultiEntities = "MultiEntities";
                 public static LocString Equipment = "Equipment";
                 public static LocString Food = "Food";
                 public static LocString Geyser = "Geyser";

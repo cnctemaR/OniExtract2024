@@ -61,6 +61,7 @@ namespace OniExtract2024
         {
             static void Postfix(string id, float duration, float secondsPerMeteor, MathUtil.MinMax secondsBombardmentOff, MathUtil.MinMax secondsBombardmentOn, string clusterMapMeteorShowerID, bool affectedByDifficulty)
             {
+                if (!SingletonOptions<ModOptions>.Instance.MultiEntities) return;
                 OutMeteorShowerEvent meteorShowEvent = new OutMeteorShowerEvent(id, (float)duration, (float)secondsPerMeteor, secondsBombardmentOff, secondsBombardmentOn, clusterMapMeteorShowerID, affectedByDifficulty);
                 exportMultiEntity.addNewMeteorShowerEvent(meteorShowEvent);
             }
@@ -101,6 +102,7 @@ namespace OniExtract2024
 
                 if (insertionIndex != -1)
                 {
+                    if (!SingletonOptions<ModOptions>.Instance.MultiEntities) return code;
                     code.Insert(++insertionIndex, new CodeInstruction(OpCodes.Call, RegisterExportEntityMethod));
                 }
                 return code;
@@ -190,7 +192,10 @@ namespace OniExtract2024
                 }
 
                 //Debug.Log("OniExtract: " + "Export MultiEntity");
-                exportMultiEntity.ExportJsonFile();
+                if (SingletonOptions<ModOptions>.Instance.MultiEntities)
+                {
+                    exportMultiEntity.ExportJsonFile();
+                }
             }
         }
 
