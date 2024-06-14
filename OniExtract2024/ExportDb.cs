@@ -8,7 +8,7 @@ using Attribute = Klei.AI.Attribute;
 public class ExportDb : BaseExport
 {
     public override string ExportFileName { get; set; } = "db";
-    public List<Disease> dieases = new List<Disease>();
+    public List<Disease> disease = new List<Disease>();
     public List<Sickness> sicknesses = new List<Sickness>();
     public List<Urge> urges = new List<Urge>();
     public List<AssignableSlot> assignableSlots = new List<AssignableSlot>();
@@ -76,7 +76,7 @@ public class ExportDb : BaseExport
     {
         foreach (var resource in Db.Get().Diseases.resources)
         {
-            this.dieases.Add(resource);
+            this.disease.Add(resource);
         }
         foreach (var resource in Db.Get().Sicknesses.resources)
         {
