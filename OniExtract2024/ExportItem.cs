@@ -1,12 +1,12 @@
 ﻿using OniExtract2024;
 using System.Collections.Generic;
 
-public class ExportEquipment : BaseExport
+public class ExportItem : BaseExport
 {
-    public override string ExportFileName { get; set; } = "equipment";
+    public override string ExportFileName { get; set; } = "items";
     public List<EquipmentDef> EquipmentDefs = new List<EquipmentDef>();
 
-    public ExportEquipment()
+    public ExportItem()
     {
     }
 
