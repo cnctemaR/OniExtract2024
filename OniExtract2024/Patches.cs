@@ -5,7 +5,7 @@ namespace OniExtract2024
 {
     public class Patches
     {
-        public static ExportItem exportEquip = new ExportItem();
+        static ExportItem exportItem = new ExportItem();
 
         [HarmonyPatch(typeof(LegacyModMain), "Load")]
         internal class OniExtract_Game_LegacyModMain
@@ -13,7 +13,7 @@ namespace OniExtract2024
             private static void Postfix()
             {
                 //Debug.Log("OniExtract: " + "Export Items");
-                exportEquip.ExportJsonFile();
+                exportItem.ExportJsonFile();
             }
         }
 
@@ -24,7 +24,7 @@ namespace OniExtract2024
             {
                 KPrefabID prefabID = __result.GetComponent<KPrefabID>();
                 BEgg bEgg = new BEgg(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>().Tags);
-                exportEquip.AddEgg(__result, bEgg);
+                exportItem.AddEgg(__result, bEgg);
             }
         }
 
@@ -33,8 +33,8 @@ namespace OniExtract2024
         {
             private static void Postfix(IEquipmentConfig config)
             {
-                exportEquip.AddEquipmentDef(config);
-                exportEquip.ExportJsonFile();
+                exportItem.AddEquipmentDef(config);
+                exportItem.ExportJsonFile();
             }
         }
     }
