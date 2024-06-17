@@ -182,6 +182,12 @@ public class ExportEntity : BaseExport
             bEntity.wiltConditions = null;
         }
         //Critter
+
+        CreatureBrain creatureBrain = gameObject.GetComponent<CreatureBrain>();
+        if (creatureBrain != null)
+        {
+            bEntity.creatureBrain = creatureBrain;
+        }
         DiseaseSourceVisualizer diseaseSourceVisualizer = gameObject.GetComponent<DiseaseSourceVisualizer>();
         if (diseaseSourceVisualizer != null)
         {

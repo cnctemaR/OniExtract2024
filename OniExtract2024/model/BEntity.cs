@@ -140,7 +140,7 @@ namespace OniExtract2024
         //public FactionAlignment factionAlignment;
         //public AnimEventHandler animEventHandler;
         //public Butcherable butcherable;
-        //public CreatureBrain creatureBrain;
+        public CreatureBrain creatureBrain;
         //public ChoreConsumer choreConsumer;
         //public Baggable baggable;
         //public Capturable capturable;
