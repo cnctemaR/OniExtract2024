@@ -1,4 +1,5 @@
 using HarmonyLib;
+using UnityEngine;
 
 namespace OniExtract2024
 {
@@ -11,7 +12,19 @@ namespace OniExtract2024
         {
             private static void Postfix()
             {
+                //Debug.Log("OniExtract: " + "Export Items");
+                exportEquip.ExportJsonFile();
+            }
+        }
 
+        [HarmonyPatch(typeof(EggConfig), "CreateEgg")]
+        internal class OniExtract_Game_Egg
+        {
+            private static void Postfix(ref GameObject __result)
+            {
+                KPrefabID prefabID = __result.GetComponent<KPrefabID>();
+                BEgg bEgg = new BEgg(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>().Tags);
+                exportEquip.AddEgg(__result, bEgg);
             }
         }
 
