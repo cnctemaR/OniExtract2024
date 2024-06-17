@@ -197,6 +197,12 @@ namespace OniExtract2024
                 {
                     exportMultiEntity.ExportJsonFile();
                 }
+
+                //Debug.Log("OniExtract: " + "Export Items");
+                if (SingletonOptions<ModOptions>.Instance.Item)
+                {
+                    exportItem.ExportJsonFile();
+                }
             }
         }
 
@@ -218,6 +224,7 @@ namespace OniExtract2024
         {
             private static void Postfix(ref GameObject __result)
             {
+                if (!SingletonOptions<ModOptions>.Instance.Item) return;
                 KPrefabID prefabID = __result.GetComponent<KPrefabID>();
                 BEgg bEgg = new BEgg(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>().Tags);
                 exportItem.AddEgg(__result, bEgg);
@@ -229,10 +236,8 @@ namespace OniExtract2024
         {
             private static void Postfix(IEquipmentConfig config)
             {
-                //Debug.Log("OniExtract: " + "Export Equipments");
-                if (!SingletonOptions<ModOptions>.Instance.Equipment) return;
+                if (!SingletonOptions<ModOptions>.Instance.Item) return;
                 exportItem.AddEquipmentDef(config);
-                exportItem.ExportJsonFile();
             }
         }
 

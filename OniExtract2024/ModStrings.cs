@@ -14,7 +14,7 @@ namespace OniExtract2024
                 public static LocString db = "DataBase";
                 public static LocString Entities = "Entities";
                 public static LocString MultiEntities = "MultiEntities";
-                public static LocString Equipment = "Equipment";
+                public static LocString Item = "Item";
                 public static LocString Food = "Food";
                 public static LocString Geyser = "Geyser";
                 public static LocString PoString = "Strings";

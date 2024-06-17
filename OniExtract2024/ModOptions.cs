@@ -29,8 +29,8 @@ namespace OniExtract2024
         public bool Element { get; set; } = true;
 
         [JsonProperty]
-        [Option("STRINGS.Options.JsonData.Equipment", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
-        public bool Equipment { get; set; } = true;
+        [Option("STRINGS.Options.JsonData.Item", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
+        public bool Item { get; set; } = true;
 
         [JsonProperty]
         [Option("STRINGS.Options.JsonData.Food", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
