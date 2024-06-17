@@ -15,6 +15,7 @@ namespace OniExtract2024
     {
         static ExportEntity exportEntity = new ExportEntity();
         static ExportMultiEntity exportMultiEntity = new ExportMultiEntity();
+        static ExportItem exportItem = new ExportItem();
 
         [HarmonyPatch(typeof(EntityConfigManager), "RegisterEntity")]
         internal class OniExtract_Game_EntityConfig
@@ -212,16 +213,26 @@ namespace OniExtract2024
             }
         }
 
+        [HarmonyPatch(typeof(EggConfig), "CreateEgg")]
+        internal class OniExtract_Game_Egg
+        {
+            private static void Postfix(ref GameObject __result)
+            {
+                KPrefabID prefabID = __result.GetComponent<KPrefabID>();
+                BEgg bEgg = new BEgg(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>().Tags);
+                exportItem.AddEgg(__result, bEgg);
+            }
+        }
+
         [HarmonyPatch(typeof(EquipmentConfigManager), "RegisterEquipment")]
         internal class OniExtract_Game_Equipment
         {
-            public static ExportEquipment exportEquip = new ExportEquipment();
             private static void Postfix(IEquipmentConfig config)
             {
                 //Debug.Log("OniExtract: " + "Export Equipments");
                 if (!SingletonOptions<ModOptions>.Instance.Equipment) return;
-                exportEquip.AddEquipmentDef(config);
-                exportEquip.ExportJsonFile();
+                exportItem.AddEquipmentDef(config);
+                exportItem.ExportJsonFile();
             }
         }
 
