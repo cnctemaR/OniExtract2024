@@ -151,8 +151,8 @@ namespace OniExtract2024
         //public EntitySplitter entitySplitter;
         //public Edible edible;
         //public HasSortOrder hasSortOrder;
-        //public MedicinalPill medicinalPill;
-        //public MedicinalPillWorkable medicinalPillWorkable;
+        public MedicinalPill medicinalPill;
+        public MedicinalPillWorkable medicinalPillWorkable;
         //public PlantableSeed plantableSeed;
         public SeedProducer.SeedInfo? seedInfo;
         //public EntityPreview entityPreview;
