@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
     <Compile Include="ExportItem.cs" />
+    <Compile Include="model\BSeed.cs" />
     <Compile Include="model\BEgg.cs" />
     <Compile Include="model\BVector2.cs" />
     <Compile Include="model\OutIncubationMonitorDef.cs" />

@@ -28,6 +28,17 @@ namespace OniExtract2024
             }
         }
 
+        [HarmonyPatch(typeof(EntityTemplates), "CreateAndRegisterSeedForPlant")]
+        internal class OniExtract_Game_Seed
+        {
+            private static void Postfix(ref GameObject __result)
+            {
+                KPrefabID prefabID = __result.GetComponent<KPrefabID>();
+                BSeed bSeed = new BSeed(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>().Tags);
+                exportItem.AddSeed(__result, bSeed);
+            }
+        }
+
         [HarmonyPatch(typeof(EquipmentConfigManager), "RegisterEquipment")]
         internal class OniExtract_Game_Equipment
         {
