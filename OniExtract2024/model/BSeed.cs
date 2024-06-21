@@ -8,7 +8,6 @@ namespace OniExtract2024
         public string nameString;
         public HashSet<Tag> tags;
         public BVector2 kBoxCollider2D;
-        public OutIncubationMonitorDef incubatorMonitorDef;
         public OutPickupable pickupable;
         public OutPrimaryElement primaryElement;
         public PlantableSeed plantableSeed;
