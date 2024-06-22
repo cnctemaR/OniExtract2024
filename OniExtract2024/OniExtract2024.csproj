@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
     <Compile Include="ExportItem.cs" />
+    <Compile Include="model\BEquipment.cs" />
     <Compile Include="model\BSeed.cs" />
     <Compile Include="model\BEgg.cs" />
     <Compile Include="model\BVector2.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="model\OutPickupable.cs" />
     <Compile Include="model\OutPrimaryElement.cs" />
     <Compile Include="model\OutStorage.cs" />
+    <Compile Include="model\OutSuitTank.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
