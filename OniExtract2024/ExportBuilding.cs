@@ -91,7 +91,72 @@ public class ExportBuilding : BaseExport
         if (storage != null)
         {
             bBuild.storage = new OutStorage(storage);
-        }       
+        }
+        AttachableBuilding attachableBuilding = go.GetComponent<AttachableBuilding>();
+        if (attachableBuilding != null)
+        {
+            bBuild.attachableBuilding = attachableBuilding;
+        }
+        BuildingAttachPoint buildingAttachPoint = go.GetComponent<BuildingAttachPoint>();
+        if (buildingAttachPoint != null)
+        {
+            bBuild.buildingAttachPoint = buildingAttachPoint;
+        }
+        RocketModule rocketModule = go.GetComponent<RocketModule>();
+        if (rocketModule != null)
+        {
+            bBuild.rocketModule = rocketModule;
+        }
+        ReorderableBuilding reorderableBuilding = go.GetComponent<ReorderableBuilding>();
+        if (reorderableBuilding != null)
+        {
+            bBuild.reorderableBuilding = reorderableBuilding;
+        }
+        RocketEngineCluster rocketEngineCluster = go.GetComponent<RocketEngineCluster>();
+        if (rocketEngineCluster != null)
+        {
+            bBuild.rocketEngineCluster = new OutRocketEngineCluster(rocketEngineCluster);
+        }
+        RocketModuleCluster rocketModuleCluster = go.GetComponent<RocketModuleCluster>();
+        if (rocketModuleCluster != null)
+        {
+            bBuild.rocketModuleCluster = rocketModuleCluster;
+        }
+        PassengerRocketModule passengerRocketModule = go.GetComponent<PassengerRocketModule>();
+        if (passengerRocketModule != null)
+        {
+            bBuild.passengerRocketModule = passengerRocketModule;
+        }
+        CargoBay cargoBay = go.GetComponent<CargoBay>();
+        if (cargoBay != null)
+        {
+            bBuild.cargoBay = new OutCargoBay(cargoBay);
+        }
+        CargoBayConduit cargoBayConduit = go.GetComponent<CargoBayConduit>();
+        if (cargoBayConduit != null)
+        {
+            bBuild.cargoBayConduit = cargoBayConduit;
+        }
+        CargoBayCluster cargoBayCluster = go.GetComponent<CargoBayCluster>();
+        if (cargoBayCluster != null)
+        {
+            bBuild.cargoBayCluster = new OutCargoBayCluster(cargoBayCluster);
+        }
+        TreeFilterable treeFilterable = go.GetComponent<TreeFilterable>();
+        if (treeFilterable != null)
+        {
+            bBuild.treeFilterable = new OutTreeFilterable(treeFilterable);
+        }
+        Deconstructable deconstructable = go.GetComponent<Deconstructable>();
+        if (deconstructable != null)
+        {
+            bBuild.deconstructable = deconstructable;
+        }
+        Demolishable demolishable = go.GetComponent<Demolishable>();
+        if (demolishable != null)
+        {
+            bBuild.demolishable = demolishable;
+        }
 
         this.bBuildingDefList.Add(bBuild);
     }

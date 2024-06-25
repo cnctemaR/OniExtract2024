@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace OniExtract2
+namespace OniExtract2024
 {
     public class BColor
     {
