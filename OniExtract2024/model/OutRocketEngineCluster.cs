@@ -37,7 +37,10 @@ namespace OniExtract2024
             this.exhaustDiseaseIdx = obj.exhaustDiseaseIdx;
             this.exhaustDiseaseCount = obj.exhaustDiseaseCount;
             this.emitRadiation = obj.emitRadiation;
-            this.flameLight = new OutLight2D(obj.flameLight);
+            if(obj.flameLight != null)
+            {
+                this.flameLight = new OutLight2D(obj.flameLight);
+            }
         }
     }
 }
