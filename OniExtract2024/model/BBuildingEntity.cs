@@ -5,6 +5,8 @@ namespace OniExtract2024
     public class BBuildingEntity
     {
         public string name;
+        public string nameString;
+        public HashSet<Tag> tags;
         public OutEnergyGenerator energyGenerator;
         public OutConduitConsumer conduitConsumer;
         public OutConduitDispenser conduitDispenser;
@@ -14,9 +16,10 @@ namespace OniExtract2024
         public List<OutPassiveElementConsumer> passiveElementConsumers = new List<OutPassiveElementConsumer>();
         public OutStorage storage = null;
 
-        public BBuildingEntity(string name)
+        public BBuildingEntity(string name, HashSet<Tag> tags)
         {
             this.name = name;
+            this.tags = tags;
         }
     }
 }

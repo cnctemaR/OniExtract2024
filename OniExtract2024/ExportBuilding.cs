@@ -9,6 +9,7 @@ public class ExportBuilding : BaseExport
     public List<BBuildingEntity> bBuildingDefList = new List<BBuildingEntity>();
     public List<BuildMenuCategory> buildMenuCategories = new List<BuildMenuCategory>();
     public Dictionary<string, List<KeyValuePair<string, string>>> buildingAndSubcategoryDataPairs = new Dictionary<string, List<KeyValuePair<string, string>>>();
+    public List<Tag> roomConstraintTags= new List<Tag>();
 
     public ExportBuilding()
     {
@@ -18,12 +19,14 @@ public class ExportBuilding : BaseExport
     {
         buildingDef.BlockTileMaterial = null;
         this.buildingDefs.Add(buildingDef);
+        this.roomConstraintTags = RoomConstraints.ConstraintTags.AllTags;
     }
 
     public void AddNewBuildingEntity(BuildingDef buildingDef)
     {
         GameObject go = buildingDef.BuildingComplete;
-        BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name);
+        KPrefabID prefabID = go.GetComponent<KPrefabID>();
+        BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name, prefabID.Tags);
         EnergyGenerator energyGenerator = go.GetComponent<EnergyGenerator>();
         if (energyGenerator != null)
         {
