@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using OniExtract2024;
+using System.Linq;
 
 public class ExportBuilding : BaseExport
 {
@@ -10,6 +11,7 @@ public class ExportBuilding : BaseExport
     public List<BuildMenuCategory> buildMenuCategories = new List<BuildMenuCategory>();
     public Dictionary<string, List<KeyValuePair<string, string>>> buildingAndSubcategoryDataPairs = new Dictionary<string, List<KeyValuePair<string, string>>>();
     public List<Tag> roomConstraintTags= new List<Tag>();
+    public Dictionary<string, string> requiredSkillPerkMap = new Dictionary<string, string>();
 
     public ExportBuilding()
     {
@@ -156,6 +158,15 @@ public class ExportBuilding : BaseExport
         if (demolishable != null)
         {
             bBuild.demolishable = demolishable;
+        }
+        Workable[] workableComponents = go.GetComponents<Workable>();
+        var derivedWorkables = workableComponents.Where(component => component.GetType() != typeof(Workable) && component.GetType().IsSubclassOf(typeof(Workable)));
+        foreach (var workable in derivedWorkables)
+        {
+            if (workable != null && workable.requiredSkillPerk != null && workable.requiredSkillPerk != "")
+            {
+                this.requiredSkillPerkMap.Add(buildingDef.Tag.Name, workable.requiredSkillPerk);
+            }
         }
 
         this.bBuildingDefList.Add(bBuild);
