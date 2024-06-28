@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Klei.AI;
 using System;
 using static Klei.AI.Sickness;
+using TUNING;
 
 public class ExportAttr : BaseExport
 {
     public override string ExportFileName { get; set; } = "attribute";
+    public ExposureType[] ExposureType;
     public Dictionary<string, OutSicknessComponent> sicknessComponent = new Dictionary<string, OutSicknessComponent>();
     public Dictionary<string, int> SicknessType = new Dictionary<string, int>();
     public Dictionary<string, int> Severity = new Dictionary<string, int>();
@@ -19,6 +21,7 @@ public class ExportAttr : BaseExport
 
     public void AddAllSicknessModifier()
     {
+        this.ExposureType = GERM_EXPOSURE.TYPES;
         foreach (Sickness resource in Db.Get().Sicknesses.resources)
         {
             OutSicknessComponent sicknessComponent = new OutSicknessComponent(resource.Id);
