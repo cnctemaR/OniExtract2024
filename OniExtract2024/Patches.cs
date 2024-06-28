@@ -9,7 +9,11 @@ namespace OniExtract2024
         {
             private static void Postfix()
             {
-
+                //Debug.Log("OniExtract: " + "Export Attribute");
+                ExportAttr exportAttr = new ExportAttr();
+                exportAttr.AddAllSicknessModifier();
+                exportAttr.AddAllEnumClass();
+                exportAttr.ExportJsonFile();
             }
         }
     }
