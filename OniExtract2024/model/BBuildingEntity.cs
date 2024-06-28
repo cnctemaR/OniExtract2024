@@ -21,6 +21,7 @@ namespace OniExtract2024
         public ReorderableBuilding reorderableBuilding = null;
         public OutRocketEngineCluster rocketEngineCluster = null;
         public RocketModuleCluster rocketModuleCluster = null;
+        public OutRocketEngine rocketEngine = null;
         public PassengerRocketModule passengerRocketModule = null;
         public OutCargoBay cargoBay = null;
         public CargoBayConduit cargoBayConduit = null;

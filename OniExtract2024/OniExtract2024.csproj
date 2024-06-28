@@ -95,6 +95,7 @@
     <Compile Include="model\OutPassiveElementConsumer.cs" />
     <Compile Include="model\OutPlantablePlot.cs" />
     <Compile Include="model\OutRocketEngineCluster.cs" />
+    <Compile Include="model\OutRocketEngine.cs" />
     <Compile Include="model\OutStorage.cs" />
     <Compile Include="model\OutTreeFilterable.cs" />
     <Compile Include="Patches.cs" />

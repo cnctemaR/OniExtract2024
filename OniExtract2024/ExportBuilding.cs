@@ -124,6 +124,11 @@ public class ExportBuilding : BaseExport
         {
             bBuild.rocketModuleCluster = rocketModuleCluster;
         }
+        RocketEngine rocketEngine = go.GetComponent<RocketEngine>();
+        if (rocketEngine != null)
+        {
+            bBuild.rocketEngine = new OutRocketEngine(rocketEngine);
+        }
         PassengerRocketModule passengerRocketModule = go.GetComponent<PassengerRocketModule>();
         if (passengerRocketModule != null)
         {
