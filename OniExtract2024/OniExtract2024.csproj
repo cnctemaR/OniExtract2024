@@ -94,6 +94,7 @@
     <Compile Include="ExportMultiEntity.cs" />
     <Compile Include="ExportUISprite.cs" />
     <Compile Include="Mod.cs" />
+    <Compile Include="model\BEgg.cs" />
     <Compile Include="model\BColor.cs" />
     <Compile Include="model\OutChoreGroup.cs" />
     <Compile Include="model\OutChoreType.cs" />
@@ -109,12 +110,15 @@
     <Compile Include="model\OutTraitGroup.cs" />
     <Compile Include="model\BBuildingEntity.cs" />
     <Compile Include="model\BuildMenuCategory.cs" />
+    <Compile Include="model\OutCargoBay.cs" />
+    <Compile Include="model\OutCargoBayCluster.cs" />
     <Compile Include="model\OutConduitConsumer.cs" />
     <Compile Include="model\OutConduitDispenser.cs" />
     <Compile Include="model\OutConsumedElement.cs" />
     <Compile Include="model\OutElementConsumer.cs" />
     <Compile Include="model\OutElementConverter.cs" />
     <Compile Include="model\OutEnergyGenerator.cs" />
+    <Compile Include="model\OutLight2D.cs" />
     <Compile Include="model\OutOperational.cs" />
     <Compile Include="model\OutOutputElement.cs" />
     <Compile Include="model\OutPassiveElementConsumer.cs" />
@@ -147,7 +151,9 @@
     <Compile Include="model\OutClusterTraveler.cs" />
     <Compile Include="model\OutMeteorShowerEvent.cs" />
     <Compile Include="model\OutOccupyArea.cs" />
-    <Compile Include="model\BEgg.cs" />
+    <Compile Include="model\OutRocketEngineCluster.cs" />
+    <Compile Include="model\OutRocketEngine.cs" />
+    <Compile Include="model\OutTreeFilterable.cs" />
     <Compile Include="ModOptions.cs" />
     <Compile Include="ModStrings.cs" />
     <Compile Include="Patches.cs" />

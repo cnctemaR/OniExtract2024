@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using OniExtract2024;
+using System.Linq;
 
 public class ExportBuilding : BaseExport
 {
@@ -9,6 +10,8 @@ public class ExportBuilding : BaseExport
     public List<BBuildingEntity> bBuildingDefList = new List<BBuildingEntity>();
     public List<BuildMenuCategory> buildMenuCategories = new List<BuildMenuCategory>();
     public Dictionary<string, List<KeyValuePair<string, string>>> buildingAndSubcategoryDataPairs = new Dictionary<string, List<KeyValuePair<string, string>>>();
+    public List<Tag> roomConstraintTags= new List<Tag>();
+    public Dictionary<string, string> requiredSkillPerkMap = new Dictionary<string, string>();
 
     public ExportBuilding()
     {
@@ -18,12 +21,14 @@ public class ExportBuilding : BaseExport
     {
         buildingDef.BlockTileMaterial = null;
         this.buildingDefs.Add(buildingDef);
+        this.roomConstraintTags = RoomConstraints.ConstraintTags.AllTags;
     }
 
     public void AddNewBuildingEntity(BuildingDef buildingDef)
     {
         GameObject go = buildingDef.BuildingComplete;
-        BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name);
+        KPrefabID prefabID = go.GetComponent<KPrefabID>();
+        BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name, prefabID.Tags);
         EnergyGenerator energyGenerator = go.GetComponent<EnergyGenerator>();
         if (energyGenerator != null)
         {
@@ -88,7 +93,86 @@ public class ExportBuilding : BaseExport
         if (storage != null)
         {
             bBuild.storage = new OutStorage(storage);
-        }       
+        }
+        AttachableBuilding attachableBuilding = go.GetComponent<AttachableBuilding>();
+        if (attachableBuilding != null)
+        {
+            bBuild.attachableBuilding = attachableBuilding;
+        }
+        BuildingAttachPoint buildingAttachPoint = go.GetComponent<BuildingAttachPoint>();
+        if (buildingAttachPoint != null)
+        {
+            bBuild.buildingAttachPoint = buildingAttachPoint;
+        }
+        RocketModule rocketModule = go.GetComponent<RocketModule>();
+        if (rocketModule != null)
+        {
+            bBuild.rocketModule = rocketModule;
+        }
+        ReorderableBuilding reorderableBuilding = go.GetComponent<ReorderableBuilding>();
+        if (reorderableBuilding != null)
+        {
+            bBuild.reorderableBuilding = reorderableBuilding;
+        }
+        RocketEngineCluster rocketEngineCluster = go.GetComponent<RocketEngineCluster>();
+        if (rocketEngineCluster != null)
+        {
+            bBuild.rocketEngineCluster = new OutRocketEngineCluster(rocketEngineCluster);
+        }
+        RocketModuleCluster rocketModuleCluster = go.GetComponent<RocketModuleCluster>();
+        if (rocketModuleCluster != null)
+        {
+            bBuild.rocketModuleCluster = rocketModuleCluster;
+        }
+        RocketEngine rocketEngine = go.GetComponent<RocketEngine>();
+        if (rocketEngine != null)
+        {
+            bBuild.rocketEngine = new OutRocketEngine(rocketEngine);
+        }
+        PassengerRocketModule passengerRocketModule = go.GetComponent<PassengerRocketModule>();
+        if (passengerRocketModule != null)
+        {
+            bBuild.passengerRocketModule = passengerRocketModule;
+        }
+        CargoBay cargoBay = go.GetComponent<CargoBay>();
+        if (cargoBay != null)
+        {
+            bBuild.cargoBay = new OutCargoBay(cargoBay);
+        }
+        CargoBayConduit cargoBayConduit = go.GetComponent<CargoBayConduit>();
+        if (cargoBayConduit != null)
+        {
+            bBuild.cargoBayConduit = cargoBayConduit;
+        }
+        CargoBayCluster cargoBayCluster = go.GetComponent<CargoBayCluster>();
+        if (cargoBayCluster != null)
+        {
+            bBuild.cargoBayCluster = new OutCargoBayCluster(cargoBayCluster);
+        }
+        TreeFilterable treeFilterable = go.GetComponent<TreeFilterable>();
+        if (treeFilterable != null)
+        {
+            bBuild.treeFilterable = new OutTreeFilterable(treeFilterable);
+        }
+        Deconstructable deconstructable = go.GetComponent<Deconstructable>();
+        if (deconstructable != null)
+        {
+            bBuild.deconstructable = deconstructable;
+        }
+        Demolishable demolishable = go.GetComponent<Demolishable>();
+        if (demolishable != null)
+        {
+            bBuild.demolishable = demolishable;
+        }
+        Workable[] workableComponents = go.GetComponents<Workable>();
+        var derivedWorkables = workableComponents.Where(component => component.GetType() != typeof(Workable) && component.GetType().IsSubclassOf(typeof(Workable)));
+        foreach (var workable in derivedWorkables)
+        {
+            if (workable != null && workable.requiredSkillPerk != null && workable.requiredSkillPerk != "")
+            {
+                this.requiredSkillPerkMap.Add(buildingDef.Tag.Name, workable.requiredSkillPerk);
+            }
+        }
 
         this.bBuildingDefList.Add(bBuild);
     }
