@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
+    <Compile Include="ExportAttr.cs" />
     <Compile Include="ExportTag.cs" />
     <Compile Include="ExportPOString.cs" />
     <Compile Include="ExportFood.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="model\BSeed.cs" />
     <Compile Include="model\BEgg.cs" />
     <Compile Include="model\BColor.cs" />
+    <Compile Include="model\OutAttributeModifierSickness.cs" />
+    <Compile Include="model\SicknessComponent.cs" />
     <Compile Include="model\OutChoreGroup.cs" />
     <Compile Include="model\OutChoreType.cs" />
     <Compile Include="model\OutScheduleBlockType.cs" />

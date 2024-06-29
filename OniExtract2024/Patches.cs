@@ -204,6 +204,11 @@ namespace OniExtract2024
                 {
                     exportItem.ExportJsonFile();
                 }
+                //Debug.Log("OniExtract: " + "Export Attribute");
+                ExportAttr exportAttr = new ExportAttr();
+                exportAttr.AddAllSicknessModifier();
+                exportAttr.AddAllEnumClass();
+                exportAttr.ExportJsonFile();
             }
         }
 
