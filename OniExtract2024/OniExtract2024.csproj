@@ -94,6 +94,8 @@
     <Compile Include="ExportMultiEntity.cs" />
     <Compile Include="ExportUISprite.cs" />
     <Compile Include="Mod.cs" />
+    <Compile Include="model\BEquipment.cs" />
+    <Compile Include="model\BSeed.cs" />
     <Compile Include="model\BEgg.cs" />
     <Compile Include="model\BColor.cs" />
     <Compile Include="model\OutChoreGroup.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="model\OutSpice.cs" />
     <Compile Include="model\OutStatusItem.cs" />
     <Compile Include="model\OutStorage.cs" />
+    <Compile Include="model\OutSuitTank.cs" />
     <Compile Include="model\OutStory.cs" />
     <Compile Include="model\OutTech.cs" />
     <Compile Include="model\OutTechItem.cs" />
