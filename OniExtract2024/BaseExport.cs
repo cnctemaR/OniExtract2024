@@ -26,7 +26,12 @@ namespace OniExtract2024
 
         public string GetDatabaseLocation()
         {
-            return Path.Combine(Util.RootFolder(), "export", DatabaseDirName);
+            string exportDir = DatabaseDirName;
+            if (DlcManager.GetActiveDLCIds().Count == 0)
+            {
+                exportDir += "_base";
+            }
+            return Path.Combine(Util.RootFolder(), "export", exportDir);
         }
 
         public void ExportJsonFile()
