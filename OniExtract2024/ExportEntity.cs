@@ -683,5 +683,15 @@ public class ExportEntity : BaseExport
         {
             bEntity.oxygenBreather = null;
         }
+        MedicinalPill medicinalPill = gameObject.GetComponent<MedicinalPill>();
+        if (medicinalPill != null)
+        {
+            bEntity.medicinalPill = medicinalPill;
+        }
+        MedicinalPillWorkable medicinalPillWorkable = gameObject.GetComponent<MedicinalPillWorkable>();
+        if (medicinalPillWorkable != null)
+        {
+            bEntity.medicinalPillWorkable = medicinalPillWorkable;
+        }
     }
 }
