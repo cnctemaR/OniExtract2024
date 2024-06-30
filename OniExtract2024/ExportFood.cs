@@ -1,4 +1,4 @@
-﻿using OniExtract2024;
+using OniExtract2024;
 using System.Collections.Generic;
 using static EdiblesManager;
 
@@ -14,7 +14,7 @@ public class ExportFood : BaseExport
 
     public void ExportAllFood()
     {
-        foreach (var foodInfo in EdiblesManager.GetAllFoodTypes())
+        foreach (var foodInfo in EdiblesManager.GetAllLoadedFoodTypes())
         {
             this.foodInfoList.Add(foodInfo);
         }

@@ -1,4 +1,4 @@
-﻿using Database;
+using Database;
 using ProcGen;
 
 namespace OniExtract2024
@@ -10,7 +10,6 @@ namespace OniExtract2024
         public HashedString IdHash;
         public bool Disabled;
         public ResourceGuid Guid;
-        public int kleiUseOnlyCoordinateOffset;
         public bool autoStart;
         public string keepsakePrefabId;
         public readonly string worldgenStoryTraitKey;
@@ -25,7 +24,6 @@ namespace OniExtract2024
             this.IdHash = obj.IdHash;
             this.Disabled = obj.Disabled;
             this.Guid = obj.Guid;
-            this.kleiUseOnlyCoordinateOffset = obj.kleiUseOnlyCoordinateOffset;
             this.autoStart = obj.autoStart;
             this.keepsakePrefabId = obj.keepsakePrefabId;
             this.worldgenStoryTraitKey = obj.worldgenStoryTraitKey;

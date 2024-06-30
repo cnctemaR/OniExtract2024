@@ -116,7 +116,7 @@ namespace OniExtract2024
         {
             private static void Postfix()
             {
-                //Debug.Log("OniExtract: " + "Export Food");
+                Debug.Log("OniExtract: " + "Export Food");
                 if (SingletonOptions<ModOptions>.Instance.Food)
                 {
                     ExportFood exportFood = new ExportFood();
@@ -124,7 +124,7 @@ namespace OniExtract2024
                     exportFood.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export recipes");
+                Debug.Log("OniExtract: " + "Export recipes");
                 if (SingletonOptions<ModOptions>.Instance.Recipe)
                 {
                     ExportRecipe exportRecipe = new ExportRecipe();
@@ -132,7 +132,7 @@ namespace OniExtract2024
                     exportRecipe.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export Elements");
+                Debug.Log("OniExtract: " + "Export Elements");
                 if (SingletonOptions<ModOptions>.Instance.Element)
                 {
                     ExportElement exportElement = new ExportElement();
@@ -140,7 +140,7 @@ namespace OniExtract2024
                     exportElement.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export PO_string");
+                Debug.Log("OniExtract: " + "Export PO_string");
                 if (SingletonOptions<ModOptions>.Instance.PoString)
                 {
                     ExportPOString exportPOString = new ExportPOString();
@@ -148,7 +148,7 @@ namespace OniExtract2024
                     exportPOString.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export Tags");
+                Debug.Log("OniExtract: " + "Export Tags");
                 if (SingletonOptions<ModOptions>.Instance.Tags)
                 {
                     ExportTag exportTag = new ExportTag();
@@ -156,7 +156,7 @@ namespace OniExtract2024
                     exportTag.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export Db");
+                Debug.Log("OniExtract: " + "Export Db");
                 if (SingletonOptions<ModOptions>.Instance.db)
                 {
                     ExportDb exportDb = new ExportDb();
@@ -164,7 +164,7 @@ namespace OniExtract2024
                     exportDb.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export Buildings");
+                Debug.Log("OniExtract: " + "Export Buildings");
                 if (SingletonOptions<ModOptions>.Instance.Building)
                 {
                     ExportBuilding exportBuilding = new ExportBuilding();
@@ -179,7 +179,7 @@ namespace OniExtract2024
                     exportBuilding.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export UI Sprite");
+                Debug.Log("OniExtract: " + "Export UI Sprite");
                 if (SingletonOptions<ModOptions>.Instance.UISprintInfo)
                 {
                     ExportUISprite exportUISprite = new ExportUISprite();
@@ -187,24 +187,24 @@ namespace OniExtract2024
                     exportUISprite.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export Entity");
+                Debug.Log("OniExtract: " + "Export Entity");
                 if (SingletonOptions<ModOptions>.Instance.Entities)
                 {
                     exportEntity.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export MultiEntity");
+                Debug.Log("OniExtract: " + "Export MultiEntity");
                 if (SingletonOptions<ModOptions>.Instance.MultiEntities)
                 {
                     exportMultiEntity.ExportJsonFile();
                 }
 
-                //Debug.Log("OniExtract: " + "Export Items");
+                Debug.Log("OniExtract: " + "Export Items");
                 if (SingletonOptions<ModOptions>.Instance.Item)
                 {
                     exportItem.ExportJsonFile();
                 }
-                //Debug.Log("OniExtract: " + "Export Attribute");
+                Debug.Log("OniExtract: " + "Export Attribute");
                 if (SingletonOptions<ModOptions>.Instance.Attr)
                 {
                     ExportAttr exportAttr = new ExportAttr();
@@ -229,13 +229,22 @@ namespace OniExtract2024
         }
 
         [HarmonyPatch(typeof(EggConfig), "CreateEgg")]
+        [HarmonyPatch(new Type[] { typeof(string), typeof(string), typeof(string), typeof(Tag), typeof(string), typeof(float), typeof(int), typeof(float), typeof(string[]) })]
         internal class OniExtract_Game_Egg
         {
+            static string[] tempDlcs = null;
+            public static void Prefix(string[] dlcIds)
+            {
+                tempDlcs = dlcIds;
+            }
             private static void Postfix(ref GameObject __result)
             {
                 if (!SingletonOptions<ModOptions>.Instance.Item) return;
                 KPrefabID prefabID = __result.GetComponent<KPrefabID>();
-                BEgg bEgg = new BEgg(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>().Tags);
+                BEgg bEgg = new BEgg(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>().Tags)
+                {
+                    dlcIds = tempDlcs
+                };
                 exportItem.AddEgg(__result, bEgg);
             }
         }
