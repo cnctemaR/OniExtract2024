@@ -12,6 +12,7 @@ namespace OniExtract2024
                 public static LocString Building = "Building";
                 public static LocString Element = "Element";
                 public static LocString db = "DataBase";
+                public static LocString Attr = "Attribute";
                 public static LocString Entities = "Entities";
                 public static LocString MultiEntities = "MultiEntities";
                 public static LocString Item = "Item";

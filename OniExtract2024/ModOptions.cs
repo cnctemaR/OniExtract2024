@@ -17,6 +17,10 @@ namespace OniExtract2024
         public bool db { get; set; } = true;
 
         [JsonProperty]
+        [Option("STRINGS.Options.JsonData.Attr", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
+        public bool Attr { get; set; } = true;
+
+        [JsonProperty]
         [Option("STRINGS.Options.JsonData.Entities", null, "STRINGS.Options.JsonData.CATEGORY_NAME")]
         public bool Entities { get; set; } = true;
 

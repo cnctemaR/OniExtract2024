@@ -205,10 +205,13 @@ namespace OniExtract2024
                     exportItem.ExportJsonFile();
                 }
                 //Debug.Log("OniExtract: " + "Export Attribute");
-                ExportAttr exportAttr = new ExportAttr();
-                exportAttr.AddAllSicknessModifier();
-                exportAttr.AddAllEnumClass();
-                exportAttr.ExportJsonFile();
+                if (SingletonOptions<ModOptions>.Instance.Attr)
+                {
+                    ExportAttr exportAttr = new ExportAttr();
+                    exportAttr.AddAllSicknessModifier();
+                    exportAttr.AddAllEnumClass();
+                    exportAttr.ExportJsonFile();
+                }
             }
         }
 
