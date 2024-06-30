@@ -45,6 +45,10 @@ namespace OniExtract2024
         {
             private static void Postfix(IEquipmentConfig config)
             {
+                if (!DlcManager.IsDlcListValidForCurrentContent(config.GetDlcIds()))
+                {
+                    return;
+                }
                 EquipmentDef equipmentDef = config.CreateEquipmentDef();
                 GameObject gameObject = EntityTemplates.CreateLooseEntity(equipmentDef.Id, equipmentDef.Name, equipmentDef.RecipeDescription, equipmentDef.Mass, unitMass: true, equipmentDef.Anim, "object", Grid.SceneLayer.Ore, equipmentDef.CollisionShape, equipmentDef.width, equipmentDef.height, isPickupable: true, 0, equipmentDef.OutputElement);
                 config.DoPostConfigure(gameObject);
