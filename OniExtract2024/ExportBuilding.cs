@@ -178,6 +178,11 @@ public class ExportBuilding : BaseExport
         {
             bBuild.battery = new OutBattery(battery);
         }
+        RoomTracker roomTracker = go.GetComponent<RoomTracker>();
+        if (roomTracker != null)
+        {
+            bBuild.roomTracker = roomTracker;
+        }
 
         this.bBuildingDefList.Add(bBuild);
     }
