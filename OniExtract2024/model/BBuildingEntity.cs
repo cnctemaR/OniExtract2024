@@ -29,6 +29,7 @@ namespace OniExtract2024
         public OutTreeFilterable treeFilterable = null;
         public Deconstructable deconstructable = null;
         public Demolishable demolishable = null;
+        public OutBattery battery = null;
 
         public BBuildingEntity(string name, HashSet<Tag> tags)
         {

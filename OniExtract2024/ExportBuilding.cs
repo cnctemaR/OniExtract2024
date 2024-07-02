@@ -163,7 +163,7 @@ public class ExportBuilding : BaseExport
         if (demolishable != null)
         {
             bBuild.demolishable = demolishable;
-        }
+        }   
         Workable[] workableComponents = go.GetComponents<Workable>();
         var derivedWorkables = workableComponents.Where(component => component.GetType() != typeof(Workable) && component.GetType().IsSubclassOf(typeof(Workable)));
         foreach (var workable in derivedWorkables)
@@ -172,6 +172,11 @@ public class ExportBuilding : BaseExport
             {
                 this.requiredSkillPerkMap.Add(buildingDef.Tag.Name, workable.requiredSkillPerk);
             }
+        }
+        Battery battery = go.GetComponent<Battery>();
+        if (battery != null)
+        {
+            bBuild.battery = new OutBattery(battery);
         }
 
         this.bBuildingDefList.Add(bBuild);

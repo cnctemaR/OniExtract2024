@@ -81,6 +81,7 @@
     <Compile Include="model\BBuildingEntity.cs" />
     <Compile Include="model\BColor.cs" />
     <Compile Include="model\BuildMenuCategory.cs" />
+    <Compile Include="model\OutBattery.cs" />
     <Compile Include="model\OutCargoBay.cs" />
     <Compile Include="model\OutCargoBayCluster.cs" />
     <Compile Include="model\OutConduitConsumer.cs" />
