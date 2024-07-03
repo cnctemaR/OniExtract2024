@@ -31,6 +31,7 @@ namespace OniExtract2024
         public Demolishable demolishable = null;
         public OutBattery battery = null;
         public RoomTracker roomTracker = null;
+        public RocketUsageRestriction.Def rocketUsageRestrictionDef = null;
 
         public BBuildingEntity(string name, HashSet<Tag> tags)
         {

@@ -183,6 +183,11 @@ public class ExportBuilding : BaseExport
         {
             bBuild.roomTracker = roomTracker;
         }
+        RocketUsageRestriction.Def rocketUsage = go.GetDef<RocketUsageRestriction.Def>();
+        if (rocketUsage != null)
+        {
+            bBuild.rocketUsageRestrictionDef = rocketUsage;
+        }
 
         this.bBuildingDefList.Add(bBuild);
     }
