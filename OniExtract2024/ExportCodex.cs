@@ -1,11 +1,13 @@
 ﻿using OniExtract2024;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ExportCodex : BaseExport
 {
     public override string ExportFileName { get; set; } = "codex";
     public Dictionary<string, OutCodexEntry> categoryEntries = new Dictionary<string, OutCodexEntry>();
     public List<BTreeNode> categoryTree = new List<BTreeNode>();
+    public List<BEffectDesc> effectDescs = new List<BEffectDesc>();
 
     public ExportCodex()
     {
@@ -46,5 +48,16 @@ public class ExportCodex : BaseExport
             }
         }
         this.categoryTree = BTreeNode.BuildTree(nodes);
+    }
+
+    public void AddEffectDesc(GameObject go, List<Descriptor> descs, string effectId, bool increaseIndent)
+    {
+        if (go == null) return;
+        KPrefabID prefabID = go.GetComponent<KPrefabID>();
+        if (prefabID != null)
+        {
+            BEffectDesc effect = new BEffectDesc(prefabID.PrefabID().Name, descs, effectId, increaseIndent);
+            this.effectDescs.Add(effect);
+        }
     }
 }
