@@ -14,6 +14,8 @@ public class ExportAttr : BaseExport
     public Dictionary<string, int> Severity = new Dictionary<string, int>();
     public Dictionary<string, int> InfectionVector = new Dictionary<string, int>();
     public Dictionary<string, int> PermittedRotations = new Dictionary<string, int>();
+    public Dictionary<string, int> UnitClass = new Dictionary<string, int>();
+    public Dictionary<string, int> TimeSlice = new Dictionary<string, int>();
 
     public ExportAttr()
     {
@@ -55,5 +57,13 @@ public class ExportAttr : BaseExport
         {
             this.PermittedRotations[name] = (int)Enum.Parse(typeof(PermittedRotations), name);
         }
+        foreach (var name in Enum.GetNames(typeof(GameUtil.UnitClass)))
+        {
+            this.UnitClass[name] = (int)Enum.Parse(typeof(GameUtil.UnitClass), name);
+        }
+        foreach (var name in Enum.GetNames(typeof(GameUtil.TimeSlice)))
+        {
+            this.TimeSlice[name] = (int)Enum.Parse(typeof(GameUtil.TimeSlice), name);
+        }        
     }
 }
