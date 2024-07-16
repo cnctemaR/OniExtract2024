@@ -141,6 +141,7 @@ namespace OniExtract2024
         //public AnimEventHandler animEventHandler;
         //public Butcherable butcherable;
         public CreatureBrain creatureBrain;
+        public CritterTemperatureMonitor.Def critterTemperatureMonitorDef;
         //public ChoreConsumer choreConsumer;
         //public Baggable baggable;
         //public Capturable capturable;
