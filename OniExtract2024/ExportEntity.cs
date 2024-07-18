@@ -42,6 +42,7 @@ public class ExportEntity : BaseExport
         {
             bEntity.decorProvider = new OutDecorProvider(decorProvider);
         }
+        // Plants
         Crop crop = gameObject.GetComponent<Crop>();
         if (crop != null)
         {
@@ -68,6 +69,11 @@ public class ExportEntity : BaseExport
         else
         {
             bEntity.isStandardCropPlant = false;
+        }
+        PlantBranchGrower.Def plantBranchGrowerDef = gameObject.GetDef<PlantBranchGrower.Def>();
+        if (plantBranchGrowerDef != null)
+        {
+            bEntity.plantBranchGrowerDef = plantBranchGrowerDef;
         }
         Storage storage = gameObject.GetComponent<Storage>();
         if (storage != null)
@@ -134,10 +140,6 @@ public class ExportEntity : BaseExport
         if (primaryElement != null)
         {
             bEntity.primaryElement = new OutPrimaryElement(primaryElement);
-        }
-        else
-        {
-            bEntity.primaryElement = null;
         }
         IlluminationVulnerable illuminationVulnerable = gameObject.GetComponent<IlluminationVulnerable>();
         if (illuminationVulnerable != null)

@@ -90,6 +90,7 @@ namespace OniExtract2024
         //public SolidLogicValve solidLogicValve;
         //public SolitarySleeper solitarySleeper;
         public bool isStandardCropPlant;
+        public PlantBranchGrower.Def plantBranchGrowerDef;
         //public StarryEyed starryEyed;
         //public StickerBomb stickerBomb;
         //public Stinky stinky;
