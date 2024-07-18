@@ -135,10 +135,6 @@ public class ExportEntity : BaseExport
         {
             bEntity.primaryElement = new OutPrimaryElement(primaryElement);
         }
-        else
-        {
-            bEntity.primaryElement = null;
-        }
         IlluminationVulnerable illuminationVulnerable = gameObject.GetComponent<IlluminationVulnerable>();
         if (illuminationVulnerable != null)
         {
