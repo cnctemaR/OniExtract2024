@@ -5,11 +5,11 @@ using static EdiblesManager;
 public class ExportFood : BaseExport
 {
     public override string ExportFileName { get; set; } = "food";
-    public List<FoodInfo> foodInfoList;
+    public List<FoodInfo> foodInfoList = new List<FoodInfo>();
+    public Dictionary<int, string> qualityEffects = new Dictionary<int, string>();
 
     public ExportFood()
 	{
-        foodInfoList = new List<FoodInfo>();
     }
 
     public void ExportAllFood()
@@ -17,6 +17,7 @@ public class ExportFood : BaseExport
         foreach (var foodInfo in EdiblesManager.GetAllLoadedFoodTypes())
         {
             this.foodInfoList.Add(foodInfo);
+            this.qualityEffects[foodInfo.Quality] = Edible.GetEffectForFoodQuality(foodInfo.Quality);
         }
     }
 }
