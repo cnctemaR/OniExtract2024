@@ -7,7 +7,7 @@ public class ExportMultiEntity : BaseExport
 {
     public override string ExportFileName { get; set; } = "multiEntities";
     public List<BMultiEntity> multiEntities;
-    private Dictionary<string, OutMeteorShowerEvent> meteorShowerEventMap = new Dictionary<string, OutMeteorShowerEvent>();
+    public Dictionary<string, OutMeteorShowerEvent> meteorShowerEventMap = new Dictionary<string, OutMeteorShowerEvent>();
 
     public ExportMultiEntity()
     {
