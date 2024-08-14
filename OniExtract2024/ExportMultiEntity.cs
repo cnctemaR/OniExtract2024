@@ -22,6 +22,26 @@ public class ExportMultiEntity : BaseExport
         }
     }
 
+    public void updateAllMeteorShowEvent()
+    {
+        foreach(var keyValuePair in meteorShowerEventMap)
+        {
+            GameplayEvent gplay = Db.Get().GameplayEvents.Get(keyValuePair.Key);
+            if (gplay != null)
+            {
+                var gameplayEvent = gplay as MeteorShowerEvent;
+                var meteorShowerEvent = keyValuePair.Value;
+                meteorShowerEvent.bombardmentInfo = gameplayEvent.GetMeteorsInfo();
+                meteorShowerEvent.animFileName = gameplayEvent.animFileName;
+                meteorShowerEvent.tags = gameplayEvent.tags;
+                meteorShowerEvent.Name = gameplayEvent.Name;
+                meteorShowerEvent.IdHash = gameplayEvent.IdHash;
+                meteorShowerEvent.allowMultipleEventInstances = gameplayEvent.allowMultipleEventInstances;
+                meteorShowerEvent.numTimesAllowed = gameplayEvent.numTimesAllowed;
+            }
+        }
+    }
+
     public void LoadEntityComponent(GameObject gameObject, BMultiEntity bEntity)
     {
         KBoxCollider2D kBoxCollider2D = gameObject.GetComponent<KBoxCollider2D>();
@@ -101,8 +121,6 @@ public class ExportMultiEntity : BaseExport
             if (meteorShowerEventMap.ContainsKey(clusterMapMeteorShowerDef.eventID))
             {
                 OutMeteorShowerEvent meteorShowerEvent = meteorShowerEventMap[clusterMapMeteorShowerDef.eventID];
-                GameplayEvent gameplayEvent = Db.Get().GameplayEvents.Get(clusterMapMeteorShowerDef.eventID);
-                meteorShowerEvent.SetMeteorShowerEventData(gameplayEvent as MeteorShowerEvent);
                 bEntity.meteorShowerEvent = meteorShowerEvent;
             }
         }
