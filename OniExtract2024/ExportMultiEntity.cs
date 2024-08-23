@@ -77,6 +77,7 @@ public class ExportMultiEntity : BaseExport
         HarvestablePOIConfigurator harvestablePOIConfigurator = gameObject.GetComponent<HarvestablePOIConfigurator>();
         if (harvestablePOIConfigurator != null)
         {
+            bEntity.harvestablePOIConfigurator = harvestablePOIConfigurator;
             bEntity.harvestablePOIType = HarvestablePOIConfigurator.FindType(harvestablePOIConfigurator.presetType);
         }
         HarvestablePOIClusterGridEntity harvestablePOIClusterGridEntity = gameObject.GetComponent<HarvestablePOIClusterGridEntity>();
@@ -88,6 +89,7 @@ public class ExportMultiEntity : BaseExport
         if (artifactPOIConfigurator != null)
         {
             bEntity.artifactPOIConfigurator = artifactPOIConfigurator;
+            bEntity.artifactPOIType = ArtifactPOIConfigurator.FindType(artifactPOIConfigurator.presetType);
         }
         GeyserConfigurator geyserConfigurator = gameObject.GetComponent<GeyserConfigurator>();
         if (geyserConfigurator != null)
