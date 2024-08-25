@@ -78,11 +78,13 @@
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
     <Compile Include="ExportMultiEntity.cs" />
+    <Compile Include="model\BColor.cs" />
     <Compile Include="model\BMultiEntity.cs" />
     <Compile Include="model\BVector2.cs" />
     <Compile Include="model\OutClusterMapMeteorShowerVisualizer.cs" />
     <Compile Include="model\OutClusterTraveler.cs" />
     <Compile Include="model\OutDecorProvider.cs" />
+    <Compile Include="model\OutLight2D.cs" />
     <Compile Include="model\OutMeteorShowerEvent.cs" />
     <Compile Include="model\OutOccupyArea.cs" />
     <Compile Include="model\OutPickupable.cs" />

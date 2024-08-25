@@ -96,6 +96,11 @@ public class ExportMultiEntity : BaseExport
         {
             bEntity.spaceArtifact = new OutSpaceArtifact(spaceArtifact);
         }
+        Light2D light2D = gameObject.GetComponent<Light2D>();
+        if (light2D != null)
+        {
+            bEntity.light2D = new OutLight2D(light2D);
+        }
         GeyserConfigurator geyserConfigurator = gameObject.GetComponent<GeyserConfigurator>();
         if (geyserConfigurator != null)
         {
