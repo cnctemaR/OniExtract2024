@@ -87,6 +87,7 @@
     <Compile Include="model\OutOccupyArea.cs" />
     <Compile Include="model\OutPickupable.cs" />
     <Compile Include="model\OutPrimaryElement.cs" />
+    <Compile Include="model\OutSpaceArtifact.cs" />
     <Compile Include="model\OutStorage.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

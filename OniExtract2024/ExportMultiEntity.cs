@@ -91,6 +91,11 @@ public class ExportMultiEntity : BaseExport
             bEntity.artifactPOIConfigurator = artifactPOIConfigurator;
             bEntity.artifactPOIType = ArtifactPOIConfigurator.FindType(artifactPOIConfigurator.presetType);
         }
+        SpaceArtifact spaceArtifact = gameObject.GetComponent<SpaceArtifact>();
+        if (spaceArtifact != null)
+        {
+            bEntity.spaceArtifact = new OutSpaceArtifact(spaceArtifact);
+        }
         GeyserConfigurator geyserConfigurator = gameObject.GetComponent<GeyserConfigurator>();
         if (geyserConfigurator != null)
         {

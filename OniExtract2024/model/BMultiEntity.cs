@@ -19,6 +19,7 @@ namespace OniExtract2024
         public HarvestablePOIClusterGridEntity harvestablePOIClusterGridEntity = null;
         public ArtifactPOIConfigurator artifactPOIConfigurator = null;
         public ArtifactPOIConfigurator.ArtifactPOIType artifactPOIType = null;
+        public OutSpaceArtifact spaceArtifact = null;
         public GeyserConfigurator.GeyserType geyserType = null;
         public Studyable studyable = null;
         public ClusterDestinationSelector clusterDestinationSelector = null;
