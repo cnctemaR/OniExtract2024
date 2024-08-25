@@ -45,6 +45,7 @@ namespace OniExtract2024
                     KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
                     BMultiEntity BMultiEntity = new BMultiEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags)
                     {
+                        nameString = prefabID.GetProperName(),
                         entityType = entityType
                     };
                     exportMultiEntity.LoadEntityComponent(gameObject, BMultiEntity);
