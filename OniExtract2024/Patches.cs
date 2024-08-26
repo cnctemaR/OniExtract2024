@@ -25,6 +25,14 @@ namespace OniExtract2024
             }
         }
 
+        [HarmonyPatch(typeof(ArtifactConfig), "CreateArtifact")]
+        public class ArtifactConfig_CreateArtifact_Patch
+        {
+            static void Prefix(string id, string[] dlcIDs)
+            {
+                exportMultiEntity.artifactDlcsMap.Add(id, dlcIDs);
+            }
+        }
 
         [HarmonyPatch(typeof(EntityConfigManager), "RegisterEntities")]
         internal class OniExtract_Game_IMultiEntityConfig
