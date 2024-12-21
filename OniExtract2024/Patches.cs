@@ -32,7 +32,12 @@ namespace OniExtract2024
 
             public static GameObject RegisterPatch(GameObject gameObject)
             {
+                if (gameObject == null)
+                {
+                    return gameObject;
+                }
                 KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
+                //Debug.Log(prefabID.PrefabID().Name.ToString());
                 BEntity bEntity = new BEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags)
                 {
                     dlcIds = tempDlcs
@@ -94,7 +99,12 @@ namespace OniExtract2024
             {
                 foreach (var gameObject in gameObjects)
                 {
+                    if (gameObject == null)
+                    {
+                        continue;
+                    }
                     KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
+                    //Debug.Log(prefabID.PrefabID().Name.ToString());
                     BMultiEntity BMultiEntity = new BMultiEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags)
                     {
                         nameString = prefabID.GetProperName(),
