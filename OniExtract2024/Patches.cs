@@ -69,6 +69,14 @@ namespace OniExtract2024
             }
         }
 
+        [HarmonyPatch(typeof(ArtifactConfig), "CreateArtifact")]
+        public class ArtifactConfig_CreateArtifact_Patch
+        {
+            static void Prefix(string id, string[] dlcIDs)
+            {
+                exportMultiEntity.artifactDlcsMap.Add(id, dlcIDs);
+            }
+        }
 
         [HarmonyPatch(typeof(EntityConfigManager), "RegisterEntities")]
         internal class OniExtract_Game_IMultiEntityConfig
@@ -89,6 +97,7 @@ namespace OniExtract2024
                     KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
                     BMultiEntity BMultiEntity = new BMultiEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags)
                     {
+                        nameString = prefabID.GetProperName(),
                         entityType = entityType
                     };
                     exportMultiEntity.LoadEntityComponent(gameObject, BMultiEntity);
@@ -196,6 +205,7 @@ namespace OniExtract2024
                 Debug.Log("OniExtract: " + "Export MultiEntity");
                 if (SingletonOptions<ModOptions>.Instance.MultiEntities)
                 {
+                    exportMultiEntity.updateAllMeteorShowEvent();
                     exportMultiEntity.ExportJsonFile();
                 }
 

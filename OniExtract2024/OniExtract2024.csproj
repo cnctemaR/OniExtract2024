@@ -163,6 +163,7 @@
     <Compile Include="model\OutTreeFilterable.cs" />
     <Compile Include="ModOptions.cs" />
     <Compile Include="ModStrings.cs" />
+    <Compile Include="model\OutSpaceArtifact.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\AnimTool.cs" />
