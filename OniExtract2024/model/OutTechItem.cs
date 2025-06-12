@@ -10,7 +10,9 @@ namespace OniExtract2024
         public ResourceGuid Guid;
         public string description;
         public string parentTechId;
-        public string[] dlcIds;
+        public bool isPOIUnlock;
+        public string[] requiredDlcIds;
+        public string[] forbiddenDlcIds;
 
         public OutTechItem(TechItem obj)
         {
@@ -21,7 +23,9 @@ namespace OniExtract2024
             this.Guid = obj.Guid;
             this.description = obj.description;
             this.parentTechId = obj.parentTechId;
-            this.dlcIds = obj.dlcIds;
+            this.isPOIUnlock = obj.isPOIUnlock;
+            this.requiredDlcIds = obj.requiredDlcIds;
+            this.forbiddenDlcIds = obj.forbiddenDlcIds;
         }
     }
 }

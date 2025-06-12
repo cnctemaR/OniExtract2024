@@ -14,6 +14,7 @@ namespace OniExtract2024
         public string notificationTooltip;
         public List<OutScheduleBlockType> allowedTypes = new List<OutScheduleBlockType>();
         public bool alarm;
+        public BColor uiColor;
 
         public OutScheduleGroup(ScheduleGroup obj)
         {
@@ -30,6 +31,7 @@ namespace OniExtract2024
                 this.allowedTypes.Add(new OutScheduleBlockType(type));
             }
             this.alarm = obj.alarm;
+            this.uiColor = new BColor(obj.uiColor);
         }
     }
 }
