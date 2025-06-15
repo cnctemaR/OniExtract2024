@@ -7,7 +7,7 @@ namespace OniExtract2024
     {
         public EntryDevLog log = new EntryDevLog();
         //public List<ContentContainer> contentContainers = new List<ContentContainer>();
-        public string[] dlcIds;
+        public string[] requiredDlcIds;
         public string[] forbiddenDLCIds;
         public string[] NONE = new string[0];
         public string id;
@@ -31,8 +31,8 @@ namespace OniExtract2024
         public OutCodexEntry(CodexEntry codexEntry) {
             this.log = codexEntry.log;
             //this.contentContainers = codexEntry.contentContainers;
-            this.dlcIds = codexEntry.dlcIds;
-            this.forbiddenDLCIds = codexEntry.forbiddenDLCIds;
+            this.requiredDlcIds = codexEntry.requiredDlcIds;
+            this.forbiddenDLCIds = codexEntry.forbiddenDlcIds;
             this.id = codexEntry.id;
             this.parentId = codexEntry.parentId;
             this.category = codexEntry.category;
