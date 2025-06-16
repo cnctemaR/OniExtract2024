@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using OniExtract2024;
 using System.Linq;
@@ -28,7 +28,7 @@ public class ExportBuilding : BaseExport
     {
         GameObject go = buildingDef.BuildingComplete;
         KPrefabID prefabID = go.GetComponent<KPrefabID>();
-        BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name, prefabID.Tags);
+        BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name, prefabID);
         EnergyGenerator energyGenerator = go.GetComponent<EnergyGenerator>();
         if (energyGenerator != null)
         {

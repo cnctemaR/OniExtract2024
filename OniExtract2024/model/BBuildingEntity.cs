@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace OniExtract2024
 {
@@ -6,6 +6,7 @@ namespace OniExtract2024
     {
         public string name;
         public string nameString;
+        public BKprefabID kPrefabID;
         public HashSet<Tag> tags;
         public OutEnergyGenerator energyGenerator;
         public OutConduitConsumer conduitConsumer;
@@ -33,10 +34,12 @@ namespace OniExtract2024
         public RoomTracker roomTracker = null;
         public RocketUsageRestriction.Def rocketUsageRestrictionDef = null;
 
-        public BBuildingEntity(string name, HashSet<Tag> tags)
+        public BBuildingEntity(string name, KPrefabID kPrefabID)
         {
             this.name = name;
-            this.tags = tags;
+            this.nameString = kPrefabID.GetProperName();
+            this.tags = kPrefabID.Tags;
+            this.kPrefabID = new BKprefabID(kPrefabID);
         }
     }
 }
