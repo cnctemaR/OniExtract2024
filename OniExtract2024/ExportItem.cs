@@ -1,4 +1,4 @@
-﻿using OniExtract2024;
+using OniExtract2024;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,15 +25,6 @@ public class ExportItem : BaseExport
 
     public void AddEgg(GameObject gameObject, BEgg bEntity)
     {
-        KPrefabID kprefabID = gameObject.GetComponent<KPrefabID>();
-        if (kprefabID != null)
-        {
-            bEntity.tags = kprefabID.Tags;
-        }
-        else
-        {
-            bEntity.tags = new HashSet<Tag>();
-        }
         KBoxCollider2D kBoxCollider2D = gameObject.GetComponent<KBoxCollider2D>();
         if (kBoxCollider2D != null)
         {
@@ -64,15 +55,6 @@ public class ExportItem : BaseExport
 
     public void AddSeed(GameObject gameObject, BSeed bEntity)
     {
-        KPrefabID kprefabID = gameObject.GetComponent<KPrefabID>();
-        if (kprefabID != null)
-        {
-            bEntity.tags = kprefabID.Tags;
-        }
-        else
-        {
-            bEntity.tags = new HashSet<Tag>();
-        }
         KBoxCollider2D kBoxCollider2D = gameObject.GetComponent<KBoxCollider2D>();
         if (kBoxCollider2D != null)
         {
@@ -108,15 +90,6 @@ public class ExportItem : BaseExport
 
     public void AddEquipment(GameObject gameObject, BEquipment bEntity)
     {
-        KPrefabID kprefabID = gameObject.GetComponent<KPrefabID>();
-        if (kprefabID != null)
-        {
-            bEntity.tags = kprefabID.Tags;
-        }
-        else
-        {
-            bEntity.tags = new HashSet<Tag>();
-        }
         KBoxCollider2D kBoxCollider2D = gameObject.GetComponent<KBoxCollider2D>();
         if (kBoxCollider2D != null)
         {

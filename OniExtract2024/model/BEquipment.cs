@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +8,7 @@ namespace OniExtract2024
     {
         public string name;
         public string nameString;
-        public string[] dlcIds = null;
+        public BKprefabID kPrefabID;
         public HashSet<Tag> tags;
         public BVector2 kBoxCollider2D;
         public OutSuitTank suitTank;
@@ -18,10 +18,11 @@ namespace OniExtract2024
         public OutPickupable pickupable;
         public OutPrimaryElement primaryElement;
 
-        public BEquipment(string name, HashSet<Tag> tags)
+        public BEquipment(string name, KPrefabID kPrefabID)
         {
             this.name = name;
-            this.tags = tags;
+            this.kPrefabID = new BKprefabID(kPrefabID);
+            this.tags = kPrefabID.Tags;
         }
 
     }
