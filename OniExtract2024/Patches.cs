@@ -76,10 +76,10 @@ namespace OniExtract2024
         {
             private static void Postfix()
             {
-                //Debug.Log("OniExtract: " + "Export MultiEntity");
-                    exportMultiEntity.updateAllMeteorShowEvent();
-                    exportMultiEntity.ExportJsonFile();
-                }
+            //Debug.Log("OniExtract: " + "Export MultiEntity");
+                exportMultiEntity.updateAllMeteorShowEvent();
+                exportMultiEntity.ExportJsonFile();
+            }
         }
     }
 }
