@@ -233,11 +233,6 @@ namespace OniExtract2024
         [HarmonyPatch(new Type[] { typeof(string), typeof(string), typeof(string), typeof(Tag), typeof(string), typeof(float), typeof(int), typeof(float), typeof(string[]), typeof(string[]), typeof(bool) })]
         internal class OniExtract_Game_Egg
         {
-            static string[] tempDlcs = null;
-            public static void Prefix(string[] dlcIds)
-            {
-                tempDlcs = dlcIds;
-            }
             private static void Postfix(ref GameObject __result)
             {
                 if (!SingletonOptions<ModOptions>.Instance.Item) return;
