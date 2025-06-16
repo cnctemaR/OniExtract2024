@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="BaseExport.cs" />
     <Compile Include="model\BColor.cs" />
+    <Compile Include="model\BKprefabID.cs" />
     <Compile Include="model\BVector2.cs" />
     <Compile Include="model\OutBlightVulnerable.cs" />
     <Compile Include="model\OutComet.cs" />
