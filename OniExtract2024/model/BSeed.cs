@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace OniExtract2024
 {
@@ -6,6 +6,7 @@ namespace OniExtract2024
     {
         public string name;
         public string nameString;
+        public BKprefabID kPrefabID;
         public HashSet<Tag> tags;
         public BVector2 kBoxCollider2D;
         public OutPickupable pickupable;
@@ -13,10 +14,11 @@ namespace OniExtract2024
         public PlantableSeed plantableSeed;
         public MutantPlant mutantPlant;
 
-        public BSeed(string name, HashSet<Tag> tags)
+        public BSeed(string name, KPrefabID kPrefabID)
         {
             this.name = name;
-            this.tags = tags;
+            this.kPrefabID = new BKprefabID(kPrefabID);
+            this.tags = kPrefabID.Tags;
         }
 
     }
