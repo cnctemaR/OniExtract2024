@@ -27,7 +27,7 @@ namespace OniExtract2024
         public string GetDatabaseLocation()
         {
             string exportDir = DatabaseDirName;
-            if (DlcManager.GetActiveDLCIds().Count == 0)
+            if (!DlcManager.IsExpansion1Active())
             {
                 exportDir += "_base";
             }
