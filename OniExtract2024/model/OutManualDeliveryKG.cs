@@ -1,4 +1,4 @@
-﻿
+
 namespace OniExtract2024
 {
     public class OutManualDeliveryKG
@@ -8,9 +8,9 @@ namespace OniExtract2024
         public Tag[] forbiddenTags;        
         public float capacity = 100f;        
         public float refillMass = 10f;        
-        public float MinimumMass = 10f;        
-        public bool RoundFetchAmountToInt;        
-        public float MassPerUnit = 1f;        
+        public float MinimumMass = 10f;
+        public bool RoundFetchAmountToInt;
+        public bool FillToCapacity = false;
         public Operational.State operationalRequirement;        
         public bool allowPause;        
         public bool paused;        
@@ -34,7 +34,7 @@ namespace OniExtract2024
             this.refillMass = obj.refillMass;
             this.MinimumMass = obj.MinimumMass;
             this.RoundFetchAmountToInt = obj.RoundFetchAmountToInt;
-            this.MassPerUnit = obj.MassPerUnit;
+            this.FillToCapacity = obj.FillToCapacity;
             this.operationalRequirement = obj.operationalRequirement;
             this.allowPause = obj.allowPause;
             this.paused = obj.IsPaused;

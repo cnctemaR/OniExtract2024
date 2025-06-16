@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace OniExtract2024
 {
@@ -6,8 +6,6 @@ namespace OniExtract2024
     {
         public string name;
         public string nameString;
-        public string[] dlcIds = null;
-        public HashSet<Tag> tags;
         //public AirFilter airFilter;
         //public AlgaeDistillery algaeDistillery;
         //public AlgaeHabitat algaeHabitat;
@@ -104,7 +102,7 @@ namespace OniExtract2024
         //public WarmBlooded warmBlooded;
         //public WaterPurifier waterPurifier;
         //public Workaholic workaholic;
-        //public KPrefabID kPrefabID;
+        public BKprefabID kPrefabID;
         //public KSelectable kSelectable;
         //public KBatchedAnimController kBatchedAnimController;
         //public StateMachineController stateMachineController;
@@ -258,10 +256,10 @@ namespace OniExtract2024
         //duplicant
         public OutOxygenBreather oxygenBreather;
 
-        public BEntity(string name, HashSet<Tag> tags)
+        public BEntity(string name, KPrefabID kPrefabID)
         {
             this.name = name;
-            this.tags = tags;
+            this.kPrefabID = new BKprefabID(kPrefabID);
         }
 
     }

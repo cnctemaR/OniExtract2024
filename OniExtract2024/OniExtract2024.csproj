@@ -99,6 +99,7 @@
     <Compile Include="model\BSeed.cs" />
     <Compile Include="model\BEgg.cs" />
     <Compile Include="model\BColor.cs" />
+    <Compile Include="model\BKprefabID.cs" />
     <Compile Include="model\OutAttributeModifierSickness.cs" />
     <Compile Include="model\SicknessComponent.cs" />
     <Compile Include="model\OutChoreGroup.cs" />

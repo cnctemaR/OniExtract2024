@@ -23,13 +23,6 @@ namespace OniExtract2024
         {
             private static readonly MethodInfo InjectBehind = AccessTools.Method(typeof(IEntityConfig), nameof(IEntityConfig.CreatePrefab));
             private static readonly MethodInfo RegisterExportEntityMethod = AccessTools.Method(typeof(OniExtract_Game_EntityConfig), nameof(OniExtract_Game_EntityConfig.RegisterPatch));
-            static string[] tempDlcs = null;
-
-            public static void Prefix(IEntityConfig config)
-            {
-                tempDlcs = config.GetDlcIds();
-            }
-
             public static GameObject RegisterPatch(GameObject gameObject)
             {
                 if (gameObject == null)
@@ -38,10 +31,7 @@ namespace OniExtract2024
                 }
                 KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
                 //Debug.Log(prefabID.PrefabID().Name.ToString());
-                BEntity bEntity = new BEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags)
-                {
-                    dlcIds = tempDlcs
-                };
+                BEntity bEntity = new BEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>());
                 ExportEntity.LoadEntityComponent(gameObject, bEntity);
                 exportEntity.entities.Add(bEntity);
                 return gameObject;
