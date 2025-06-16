@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace OniExtract2024
 {
@@ -7,7 +7,7 @@ namespace OniExtract2024
         public string name;
         public string nameString;
         public string entityType;
-        public HashSet<Tag> tags;
+        public BKprefabID kPrefabID;
         public BVector2 kBoxCollider2D = null;
         public OutOccupyArea occupyArea = null;
         public OutDecorProvider decorProvider = null;
@@ -29,11 +29,12 @@ namespace OniExtract2024
         public ClusterMapMeteorShower.Def clusterMapMeteorShowerDef = null;
         public OutMeteorShowerEvent meteorShowerEvent = null;
         public ArtifactPOIClusterGridEntity artifactPOIClusterGridEntity = null;
+        public RadiationEmitter radiationEmitter = null;
 
-        public BMultiEntity(string name, HashSet<Tag> tags)
+        public BMultiEntity(string name, KPrefabID kPrefabID)
         {
             this.name = name;
-            this.tags = tags;
+            this.kPrefabID = new BKprefabID(kPrefabID);
         }
     }
 }

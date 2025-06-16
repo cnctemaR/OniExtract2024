@@ -20,17 +20,8 @@ namespace OniExtract2024
         {
             static void Postfix(string id, float duration, float secondsPerMeteor, MathUtil.MinMax secondsBombardmentOff, MathUtil.MinMax secondsBombardmentOn, string clusterMapMeteorShowerID, bool affectedByDifficulty)
             {
-                OutMeteorShowerEvent meteorShowEvent = new OutMeteorShowerEvent(id, (float) duration, (float) secondsPerMeteor, secondsBombardmentOff, secondsBombardmentOn, clusterMapMeteorShowerID, affectedByDifficulty);
+                OutMeteorShowerEvent meteorShowEvent = new OutMeteorShowerEvent(id, (float)duration, (float)secondsPerMeteor, secondsBombardmentOff, secondsBombardmentOn, clusterMapMeteorShowerID, affectedByDifficulty);
                 exportMultiEntity.addNewMeteorShowerEvent(meteorShowEvent);
-            }
-        }
-
-        [HarmonyPatch(typeof(ArtifactConfig), "CreateArtifact")]
-        public class ArtifactConfig_CreateArtifact_Patch
-        {
-            static void Prefix(string id, string[] dlcIDs)
-            {
-                exportMultiEntity.artifactDlcsMap.Add(id, dlcIDs);
             }
         }
 
@@ -50,8 +41,13 @@ namespace OniExtract2024
             {
                 foreach (var gameObject in gameObjects)
                 {
+                    if (gameObject == null)
+                    {
+                        continue;
+                    }
                     KPrefabID prefabID = gameObject.GetComponent<KPrefabID>();
-                    BMultiEntity BMultiEntity = new BMultiEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>().Tags)
+                    //Debug.Log(prefabID.PrefabID().Name.ToString());
+                    BMultiEntity BMultiEntity = new BMultiEntity(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>())
                     {
                         nameString = prefabID.GetProperName(),
                         entityType = entityType
@@ -81,9 +77,9 @@ namespace OniExtract2024
             private static void Postfix()
             {
                 //Debug.Log("OniExtract: " + "Export MultiEntity");
-                exportMultiEntity.updateAllMeteorShowEvent();
-                exportMultiEntity.ExportJsonFile();
-            }
+                    exportMultiEntity.updateAllMeteorShowEvent();
+                    exportMultiEntity.ExportJsonFile();
+                }
         }
     }
 }

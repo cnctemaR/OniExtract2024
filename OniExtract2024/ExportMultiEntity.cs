@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using OniExtract2024;
 using Klei.AI;
@@ -8,7 +8,6 @@ public class ExportMultiEntity : BaseExport
     public override string ExportFileName { get; set; } = "multiEntities";
     public List<BMultiEntity> multiEntities;
     public Dictionary<string, OutMeteorShowerEvent> meteorShowerEventMap = new Dictionary<string, OutMeteorShowerEvent>();
-    public Dictionary<string, string[]> artifactDlcsMap= new Dictionary<string, string[]>();
 
     public ExportMultiEntity()
     {
@@ -142,5 +141,11 @@ public class ExportMultiEntity : BaseExport
         {
             bEntity.artifactPOIClusterGridEntity = artifactPOIClusterGridEntity;
         }
+        RadiationEmitter radiationEmitter = gameObject.GetComponent<RadiationEmitter>();
+        if (radiationEmitter != null)
+        {
+            bEntity.radiationEmitter = radiationEmitter;
+        }
+        
     }
 }

@@ -80,6 +80,7 @@
     <Compile Include="ExportMultiEntity.cs" />
     <Compile Include="model\BColor.cs" />
     <Compile Include="model\BMultiEntity.cs" />
+    <Compile Include="model\BKprefabID.cs" />
     <Compile Include="model\BVector2.cs" />
     <Compile Include="model\OutClusterMapMeteorShowerVisualizer.cs" />
     <Compile Include="model\OutClusterTraveler.cs" />
