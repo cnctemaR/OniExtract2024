@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace OniExtract2024
 {
@@ -17,7 +17,7 @@ namespace OniExtract2024
         public Dictionary<string, float> costsByResearchTypeID;
         public string desc;
         public string category;
-        public Tag[] tags;
+        public List<string> searchTerms;
         public float width;
         public float height;
 
@@ -36,7 +36,7 @@ namespace OniExtract2024
             this.costsByResearchTypeID = obj.costsByResearchTypeID;
             this.desc = obj.desc;
             this.category = obj.category;
-            this.tags = obj.tags;
+            this.searchTerms = obj.searchTerms;
             this.width = obj.width;
             this.height = obj.height;
 

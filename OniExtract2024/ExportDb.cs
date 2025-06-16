@@ -1,4 +1,4 @@
-﻿using OniExtract2024;
+using OniExtract2024;
 using System.Collections.Generic;
 using Database;
 using Klei.AI;
@@ -311,6 +311,7 @@ public class ExportDb : BaseExport
         this.creatureStatusItems.Add(CreatureStatusItems.Hot);
         this.creatureStatusItems.Add(CreatureStatusItems.Hot_Crop);
         this.creatureStatusItems.Add(CreatureStatusItems.Scalding);
+        this.creatureStatusItems.Add(CreatureStatusItems.Scolding);
         this.creatureStatusItems.Add(CreatureStatusItems.Cold);
         this.creatureStatusItems.Add(CreatureStatusItems.Cold_Crop);
         this.creatureStatusItems.Add(CreatureStatusItems.Crop_Too_Dark);
@@ -319,14 +320,17 @@ public class ExportDb : BaseExport
         this.creatureStatusItems.Add(CreatureStatusItems.Hypothermia);
         this.creatureStatusItems.Add(CreatureStatusItems.Hyperthermia);
         this.creatureStatusItems.Add(CreatureStatusItems.Suffocating);
+        this.creatureStatusItems.Add(CreatureStatusItems.AquaticCreatureSuffocating);
         this.creatureStatusItems.Add(CreatureStatusItems.Hatching);
         this.creatureStatusItems.Add(CreatureStatusItems.Incubating);
         this.creatureStatusItems.Add(CreatureStatusItems.Drowning);
         this.creatureStatusItems.Add(CreatureStatusItems.Saturated);
         this.creatureStatusItems.Add(CreatureStatusItems.DryingOut);
         this.creatureStatusItems.Add(CreatureStatusItems.Growing);
-        this.creatureStatusItems.Add(CreatureStatusItems.CropSleeping);
+        this.creatureStatusItems.Add(CreatureStatusItems.GrowingFruit);
+        this.creatureStatusItems.Add(CreatureStatusItems.CarnivorousPlantAwaitingVictim);
         this.creatureStatusItems.Add(CreatureStatusItems.ReadyForHarvest);
+        this.creatureStatusItems.Add(CreatureStatusItems.ReadyForHarvest_Branch);
         this.creatureStatusItems.Add(CreatureStatusItems.EnvironmentTooWarm);
         this.creatureStatusItems.Add(CreatureStatusItems.EnvironmentTooCold);
         this.creatureStatusItems.Add(CreatureStatusItems.Entombed);
@@ -362,6 +366,10 @@ public class ExportDb : BaseExport
         this.creatureStatusItems.Add(CreatureStatusItems.Hungry);
         this.creatureStatusItems.Add(CreatureStatusItems.HiveHungry);
         this.creatureStatusItems.Add(CreatureStatusItems.NoSleepSpot);
+        this.creatureStatusItems.Add(CreatureStatusItems.ProducingSugarWater);
+        this.creatureStatusItems.Add(CreatureStatusItems.SugarWaterProductionPaused);
+        this.creatureStatusItems.Add(CreatureStatusItems.SugarWaterProductionWilted);
+        this.creatureStatusItems.Add(CreatureStatusItems.SpaceTreeBranchLightStatus);
         this.creatureStatusItems.Add(CreatureStatusItems.OriginalPlantMutation);
         this.creatureStatusItems.Add(CreatureStatusItems.UnknownMutation);
         this.creatureStatusItems.Add(CreatureStatusItems.SpecificPlantMutation);
@@ -380,6 +388,13 @@ public class ExportDb : BaseExport
         this.creatureStatusItems.Add(CreatureStatusItems.MilkFull);
         this.creatureStatusItems.Add(CreatureStatusItems.GettingRanched);
         this.creatureStatusItems.Add(CreatureStatusItems.GettingMilked);
+        this.creatureStatusItems.Add(CreatureStatusItems.TemperatureHotUncomfortable);
+        this.creatureStatusItems.Add(CreatureStatusItems.TemperatureHotDeadly);
+        this.creatureStatusItems.Add(CreatureStatusItems.TemperatureColdUncomfortable);
+        this.creatureStatusItems.Add(CreatureStatusItems.TemperatureColdDeadly);
+        this.creatureStatusItems.Add(CreatureStatusItems.TravelingToPollinate);
+        this.creatureStatusItems.Add(CreatureStatusItems.Pollinating);
+        this.creatureStatusItems.Add(CreatureStatusItems.NotPollinated);
     }
     public void AddRobotStatusItems(RobotStatusItems RobotStatusItems)
     {

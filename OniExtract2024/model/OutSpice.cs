@@ -1,4 +1,4 @@
-﻿using Klei.AI;
+using Klei.AI;
 using static Database.Spice;
 
 namespace OniExtract2024
@@ -18,7 +18,7 @@ namespace OniExtract2024
         public BColor PrimaryColor;
         public BColor SecondaryColor;
         public string Image;
-        public string[] DlcIds;
+        public string[] requiredDlcIds;
 
 
         public OutSpice(Database.Spice obj)
@@ -36,7 +36,7 @@ namespace OniExtract2024
             this.PrimaryColor = new BColor(obj.PrimaryColor);
             this.SecondaryColor = new BColor(obj.SecondaryColor);
             this.Image = obj.Image;
-            this.DlcIds = obj.DlcIds;
+            this.requiredDlcIds = obj.requiredDlcIds;
         }
     }
 }
