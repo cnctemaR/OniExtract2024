@@ -28,8 +28,8 @@ namespace OniExtract2024
             this.PrefabTag = kPrefabID.PrefabTag;
             this.defaultLayer = kPrefabID.defaultLayer;
             this.tags = kPrefabID.Tags;
-            this.requiredDlcIds = kPrefabID.requiredDlcIds;
-            this.forbiddenDlcIds = kPrefabID.forbiddenDlcIds;
+            this.requiredDlcIds = kPrefabID.requiredDlcIds == null ? null : (kPrefabID.requiredDlcIds.Length == 0 ? null : kPrefabID.requiredDlcIds);
+            this.forbiddenDlcIds = kPrefabID.forbiddenDlcIds == null ? null : (kPrefabID.forbiddenDlcIds.Length == 0 ? null : kPrefabID.forbiddenDlcIds);
             this.AdditionalRequirements = kPrefabID.AdditionalRequirements;
             this.AdditionalEffects = kPrefabID.AdditionalEffects;
         }
