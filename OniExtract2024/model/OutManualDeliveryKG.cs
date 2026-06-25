@@ -3,9 +3,9 @@ namespace OniExtract2024
 {
     public class OutManualDeliveryKG
     {
-        public OutStorage storage;        
-        public Tag requestedItemTag;
-        public Tag[] forbiddenTags;        
+        public OutStorage storage;
+        // requestedItemTag removed from ManualDeliveryKG in ONI builds after 623230. Dropped (not ledger-relevant).
+        public Tag[] forbiddenTags;
         public float capacity = 100f;        
         public float refillMass = 10f;        
         public float MinimumMass = 10f;
@@ -28,7 +28,6 @@ namespace OniExtract2024
             {
                 this.storage = null;
             }
-            this.requestedItemTag = obj.requestedItemTag;
             this.forbiddenTags = obj.ForbiddenTags;
             this.capacity = obj.Capacity;
             this.refillMass = obj.refillMass;

@@ -4,7 +4,6 @@ namespace OniExtract2024
     public class OutPickupable
     {
         public bool IsEntombed;
-        public float MinTakeAmount;
         public bool prevent_absorb_until_store;
         public OutPrimaryElement PrimaryElement;
         public float ReservedAmount;
@@ -24,7 +23,7 @@ namespace OniExtract2024
         public OutPickupable(Pickupable obj)
         {
             this.IsEntombed = obj.IsEntombed;
-            this.MinTakeAmount = obj.MinTakeAmount;
+            // MinTakeAmount removed from Pickupable in ONI builds after 623230 (MissingMethodException). Field dropped.
             this.prevent_absorb_until_store = obj.prevent_absorb_until_stored;
             if(obj.PrimaryElement != null )
             {
