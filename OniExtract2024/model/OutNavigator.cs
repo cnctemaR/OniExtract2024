@@ -11,11 +11,9 @@ namespace OniExtract2024
         public Dictionary<NavType, int> distanceTravelledByNavType;
         public bool executePathProbeTaskAsync;
         public PathFinder.PotentialPath.Flags flags;
-        public int maxProbingRadius;
         public string NavGridName;
         public PathFinder.Path path;
-        public PathProber PathProber;
-        public PathProbeTask pathProbeTask;
+        // PathProber became a static class and PathProbeTask was removed in ONI builds after 623230. Both dropped (pathfinding internals, unused by the ledger).
         public Grid.SceneLayer sceneLayer = Grid.SceneLayer.Move;
         public TransitionDriver transitionDriver;
         public bool updateProber;
@@ -28,10 +26,8 @@ namespace OniExtract2024
             this.distanceTravelledByNavType = obj.distanceTravelledByNavType;
             this.executePathProbeTaskAsync = obj.executePathProbeTaskAsync;
             this.flags = obj.flags;
-            this.maxProbingRadius = obj.maxProbingRadius;
             this.NavGridName = obj.NavGridName;
             this.path = obj.path;
-            this.pathProbeTask = obj.pathProbeTask;
             this.sceneLayer = obj.sceneLayer;
             this.transitionDriver = obj.transitionDriver;
             this.updateProber = obj.updateProber;
