@@ -51,24 +51,31 @@ download_depot <AppID> <DepotsID> <ManifestID>
 ```
 export
 ├─ database
+│    ├─ attribute.json
 │    ├─ building.json
 │    ├─ db.json
 │    ├─ elements.json
 │    ├─ entities.json
-│    ├─ equipment.json
 │    ├─ food.json
 │    ├─ geyser.json
+│    ├─ items.json
+│    ├─ multiEntities.json
 │    ├─ po_string.json
 │    ├─ recipe.json
 │    ├─ tags.json
 │    └─ uiSpriteInfo.json
 ├─ ui_image
-└─ ui_image_facade
-       ├─ ArtableStages
-       ├─ BalloonArtistFacades
-       ├─ BuildingFacades
-       ├─ ClothingItems
-       ├─ EquippableFacades
-       ├─ MonumentParts
-       └─ StickerBombs
+├─ ui_image_facade
+│    ├─ ArtableStages
+│    ├─ BalloonArtistFacades
+│    ├─ BuildingFacades
+│    ├─ ClothingItems
+│    ├─ EquippableFacades
+│    ├─ MonumentParts
+│    └─ StickerBombs
+└─ connection_sprites
+       └─ {prefabId}
+              ├─ 0.png ... 15.png
 ```
+
+> 字段级 schema 见 [EXPORT_SCHEMA.md](EXPORT_SCHEMA.md)（英文）。

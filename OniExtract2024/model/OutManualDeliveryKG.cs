@@ -28,7 +28,7 @@ namespace OniExtract2024
             {
                 this.storage = null;
             }
-            this.requestedItemTag = obj.requestedItemTag;
+            // requestedItemTag removed in current game version
             this.forbiddenTags = obj.ForbiddenTags;
             this.capacity = obj.Capacity;
             this.refillMass = obj.refillMass;

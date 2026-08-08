@@ -64,7 +64,7 @@ public class ExportUISprite : BaseExport
                 {
                     tupleUISprite = Def.GetUISprite(prefab.PrefabTag);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //Debug.LogError("OniExtract: read " + prefab.PrefabTag.Name + " Failed.");
                 }
@@ -129,15 +129,15 @@ public class ExportUISprite : BaseExport
             ? permitResource.Id
             : UI.StripLinkFormatting(permitResource.Name);
     }
-    
-    private string GetFormatedUIImageFileName(KPrefabID prefab)
+
+    public static string GetFormatedUIImageFileName(KPrefabID prefab)
     {
         if (SingletonOptions<ModOptions>.Instance.SaveUIFileName == ModOptions.SaveNameMod.ID)
             return prefab.PrefabTag.Name;
         return GetProperName(prefab);
     }
 
-    private string GetProperName(KPrefabID prefab)
+    public static string GetProperName(KPrefabID prefab)
     {
         var properName = TagManager.GetProperName(prefab.PrefabID(), true);
         if (!properName.Equals("")) return properName;

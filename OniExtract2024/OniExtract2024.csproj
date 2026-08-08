@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OniExtract2024</RootNamespace>
     <AssemblyName>OniExtract2024</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -99,6 +99,7 @@
     <Compile Include="model\BSeed.cs" />
     <Compile Include="model\BEgg.cs" />
     <Compile Include="model\BColor.cs" />
+    <Compile Include="model\BElement.cs" />
     <Compile Include="model\BKprefabID.cs" />
     <Compile Include="model\OutAttributeModifierSickness.cs" />
     <Compile Include="model\SicknessComponent.cs" />
@@ -168,6 +169,14 @@
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\AnimTool.cs" />
+    <Compile Include="building\ImageCrop.cs" />
+    <Compile Include="building\UiImageRect.cs" />
+    <Compile Include="building\ExportBuildingImages.cs" />
+    <Compile Include="building\BuildingImageSnapshotter.cs" />
+    <Compile Include="connection\ExportConnectionSprites.cs" />
+    <Compile Include="connection\TileConnectionExtractor.cs" />
+    <Compile Include="connection\ConnectionSpriteSnapshotter.cs" />
+    <Compile Include="connection\ConnectionExportPatches.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="mod.yaml">

@@ -13,7 +13,7 @@ namespace OniExtract2024
 
         public OutPrimaryElement(PrimaryElement obj)
         {
-            if (!(obj.ElementID == null || obj.ElementID == 0))
+            if (obj.ElementID != 0)
             {
                 this.Name = obj.Element.tag.Name;
             }

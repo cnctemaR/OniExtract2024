@@ -4,7 +4,7 @@ namespace OniExtract2024
     public class OutPickupable
     {
         public bool IsEntombed;
-        public float MinTakeAmount;
+        public bool MinTakeAmount;
         public bool prevent_absorb_until_store;
         public OutPrimaryElement PrimaryElement;
         public float ReservedAmount;

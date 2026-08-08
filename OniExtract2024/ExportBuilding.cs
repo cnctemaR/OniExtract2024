@@ -6,7 +6,6 @@ using System.Linq;
 public class ExportBuilding : BaseExport
 {
     public override string ExportFileName { get; set; } = "building";
-    public List<BuildingDef> buildingDefs = new List<BuildingDef>();
     public List<BBuildingEntity> bBuildingDefList = new List<BBuildingEntity>();
     public List<BuildMenuCategory> buildMenuCategories = new List<BuildMenuCategory>();
     public Dictionary<string, List<KeyValuePair<string, string>>> buildingAndSubcategoryDataPairs = new Dictionary<string, List<KeyValuePair<string, string>>>();
@@ -19,8 +18,6 @@ public class ExportBuilding : BaseExport
 
     public void AddNewBuildingDef(BuildingDef buildingDef)
     {
-        buildingDef.BlockTileMaterial = null;
-        this.buildingDefs.Add(buildingDef);
         this.roomConstraintTags = RoomConstraints.ConstraintTags.AllTags;
     }
 
@@ -29,6 +26,21 @@ public class ExportBuilding : BaseExport
         GameObject go = buildingDef.BuildingComplete;
         KPrefabID prefabID = go.GetComponent<KPrefabID>();
         BBuildingEntity bBuild = new BBuildingEntity(buildingDef.Tag.Name, prefabID);
+        bBuild.widthInCells = buildingDef.WidthInCells;
+        bBuild.heightInCells = buildingDef.HeightInCells;
+        bBuild.materialCategory = buildingDef.MaterialCategory;
+        bBuild.materialMass = buildingDef.Mass;
+        bBuild.isFoundation = buildingDef.IsFoundation;
+        bBuild.isKAnimTile = buildingDef.isKAnimTile;
+        bBuild.isUtility = buildingDef.isUtility;
+        bBuild.dragBuild = buildingDef.DragBuild;
+        bBuild.buildLocationRule = (int)buildingDef.BuildLocationRule;
+        bBuild.permittedRotations = (int)buildingDef.PermittedRotations;
+        bBuild.sceneLayer = (int)buildingDef.SceneLayer;
+        bBuild.objectLayer = (int)buildingDef.ObjectLayer;
+        bBuild.viewMode = buildingDef.ViewMode.ToString();
+        bBuild.defaultAnimState = buildingDef.DefaultAnimState;
+        bBuild.uiSpriteName = buildingDef.UISprite != null ? buildingDef.UISprite.name : null;
         EnergyGenerator energyGenerator = go.GetComponent<EnergyGenerator>();
         if (energyGenerator != null)
         {

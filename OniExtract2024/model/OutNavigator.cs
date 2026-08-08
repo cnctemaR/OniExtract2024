@@ -14,8 +14,6 @@ namespace OniExtract2024
         public int maxProbingRadius;
         public string NavGridName;
         public PathFinder.Path path;
-        public PathProber PathProber;
-        public PathProbeTask pathProbeTask;
         public Grid.SceneLayer sceneLayer = Grid.SceneLayer.Move;
         public TransitionDriver transitionDriver;
         public bool updateProber;
@@ -28,10 +26,9 @@ namespace OniExtract2024
             this.distanceTravelledByNavType = obj.distanceTravelledByNavType;
             this.executePathProbeTaskAsync = obj.executePathProbeTaskAsync;
             this.flags = obj.flags;
-            this.maxProbingRadius = obj.maxProbingRadius;
+            // maxProbingRadius removed in current game version
             this.NavGridName = obj.NavGridName;
             this.path = obj.path;
-            this.pathProbeTask = obj.pathProbeTask;
             this.sceneLayer = obj.sceneLayer;
             this.transitionDriver = obj.transitionDriver;
             this.updateProber = obj.updateProber;

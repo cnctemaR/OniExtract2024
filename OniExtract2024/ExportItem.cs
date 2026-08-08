@@ -5,22 +5,12 @@ using UnityEngine;
 public class ExportItem : BaseExport
 {
     public override string ExportFileName { get; set; } = "items";
-    public List<EquipmentDef> EquipmentDefs = new List<EquipmentDef>();
     public List<BEgg> eggs = new List<BEgg>();
     public List<BSeed> seeds = new List<BSeed>();
     public List<BEquipment> equipments = new List<BEquipment>();
 
     public ExportItem()
     {
-    }
-
-    public void AddEquipmentDef(IEquipmentConfig config)
-    {
-        if (!DlcManager.IsDlcListValidForCurrentContent(config.GetDlcIds()))
-        {
-            return;
-        }
-        this.EquipmentDefs.Add(config.CreateEquipmentDef());
     }
 
     public void AddEgg(GameObject gameObject, BEgg bEntity)

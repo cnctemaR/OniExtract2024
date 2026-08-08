@@ -214,6 +214,15 @@ namespace OniExtract2024
                 Debug.Log("OniExtract: " + "Export Items");
                 if (SingletonOptions<ModOptions>.Instance.Item)
                 {
+                    foreach (KPrefabID kpid in Assets.Prefabs)
+                    {
+                        if (kpid == null) continue;
+                        GameObject prefab = kpid.gameObject;
+                        IncubationMonitor.Def incDef = prefab.GetDef<IncubationMonitor.Def>();
+                        if (incDef == null) continue;
+                        BEgg bEgg = new BEgg(kpid.PrefabID().Name, kpid);
+                        exportItem.AddEgg(prefab, bEgg);
+                    }
                     exportItem.ExportJsonFile();
                 }
                 Debug.Log("OniExtract: " + "Export Attribute");
@@ -240,19 +249,6 @@ namespace OniExtract2024
             }
         }
 
-        [HarmonyPatch(typeof(EggConfig), "CreateEgg")]
-        [HarmonyPatch(new Type[] { typeof(string), typeof(string), typeof(string), typeof(Tag), typeof(string), typeof(float), typeof(int), typeof(float), typeof(string[]), typeof(string[]), typeof(bool) })]
-        internal class OniExtract_Game_Egg
-        {
-            private static void Postfix(ref GameObject __result)
-            {
-                if (!SingletonOptions<ModOptions>.Instance.Item) return;
-                KPrefabID prefabID = __result.GetComponent<KPrefabID>();
-                BEgg bEgg = new BEgg(prefabID.PrefabID().Name, __result.GetComponent<KPrefabID>());
-                exportItem.AddEgg(__result, bEgg);
-            }
-        }
-
         [HarmonyPatch(typeof(EntityTemplates), "CreateAndRegisterSeedForPlant")]
         [HarmonyPatch(new Type[] { typeof(GameObject), typeof(IHasDlcRestrictions), typeof(SeedProducer.ProductionType), typeof(string), typeof(string), typeof(string), typeof(KAnimFile), typeof(string), typeof(int), typeof(List<Tag>), typeof(SingleEntityReceptacle.ReceptacleDirection), typeof(Tag), typeof(int), typeof(string), typeof(EntityTemplates.CollisionShape), typeof(float), typeof(float), typeof(Recipe.Ingredient[]), typeof(string), typeof(bool) })]
         internal class OniExtract_Game_Seed
@@ -272,19 +268,11 @@ namespace OniExtract2024
             {
                 string[] requiredDlcIds = null;
                 string[] forbiddenDlcIds = null;
-                if (config.GetDlcIds() != null)
+                IHasDlcRestrictions hasDlcRestrictions = config as IHasDlcRestrictions;
+                if (hasDlcRestrictions != null)
                 {
-                    DlcManager.ConvertAvailableToRequireAndForbidden(config.GetDlcIds(), out requiredDlcIds, out forbiddenDlcIds);
-                    DebugUtil.DevLogError($"{config.GetType()} implements GetDlcIds, which is obsolete.");
-                }
-                else
-                {
-                    IHasDlcRestrictions hasDlcRestrictions = config as IHasDlcRestrictions;
-                    if (hasDlcRestrictions != null)
-                    {
-                        requiredDlcIds = hasDlcRestrictions.GetRequiredDlcIds();
-                        forbiddenDlcIds = hasDlcRestrictions.GetForbiddenDlcIds();
-                    }
+                    requiredDlcIds = hasDlcRestrictions.GetRequiredDlcIds();
+                    forbiddenDlcIds = hasDlcRestrictions.GetForbiddenDlcIds();
                 }
 
                 if (!DlcManager.IsCorrectDlcSubscribed(requiredDlcIds, forbiddenDlcIds))
@@ -298,16 +286,6 @@ namespace OniExtract2024
                 KPrefabID prefabID = gameObject.AddOrGet<KPrefabID>();
                 BEquipment bEquip = new BEquipment(prefabID.PrefabID().Name, gameObject.GetComponent<KPrefabID>());
                 exportItem.AddEquipment(gameObject, bEquip);
-            }
-        }
-
-        [HarmonyPatch(typeof(EquipmentConfigManager), "RegisterEquipment")]
-        internal class OniExtract_Game_Equipment
-        {
-            private static void Postfix(IEquipmentConfig config)
-            {
-                if (!SingletonOptions<ModOptions>.Instance.Item) return;
-                exportItem.AddEquipmentDef(config);
             }
         }
 

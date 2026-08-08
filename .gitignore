@@ -1,7 +1,12 @@
 ﻿.vs
+.claude
 OniExtract2024/obj/Debug
 OniExtract2024/bin/Debug
 OniExtract2024/obj
 OniExtract2024/bin
 OniExtract2024/obj/Release
 OniExtract2024/bin/Release
+OniExtract2024.Tests/bin/
+OniExtract2024.Tests/obj/
+export-2023.zip
+export/

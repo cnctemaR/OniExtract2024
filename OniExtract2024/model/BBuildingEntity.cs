@@ -8,6 +8,23 @@ namespace OniExtract2024
         public string nameString;
         public BKprefabID kPrefabID;
         public HashSet<Tag> tags;
+
+        // BuildingDef display fields (missing from original 2024 export)
+        public int widthInCells;
+        public int heightInCells;
+        public string[] materialCategory;
+        public float[] materialMass;
+        public bool isFoundation;
+        public bool isKAnimTile;
+        public bool isUtility;
+        public bool dragBuild;
+        public int buildLocationRule;
+        public int permittedRotations;
+        public int sceneLayer;
+        public int objectLayer;
+        public string viewMode;
+        public string defaultAnimState;
+        public string uiSpriteName;
         public OutEnergyGenerator energyGenerator;
         public OutConduitConsumer conduitConsumer;
         public OutConduitDispenser conduitDispenser;
